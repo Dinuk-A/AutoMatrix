@@ -2,6 +2,14 @@
 
 # api handlings 
     *get 
+        --response body
+        --status code
+        --headers
+        --response time
+        --content type
+        --Response Body Structure
+        --Error Handling (Negative Scenarios)
+
     *post
     *put 
     *delete
@@ -10,8 +18,12 @@
     * read json test data
 
 
+
+
+
+
                         ## FROM GPT ##
-                        
+
 # Logging Utility
 - Set up Log4j for logging API request/response details.
 

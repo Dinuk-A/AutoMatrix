@@ -9,7 +9,7 @@ public class ConfigReader {
 
     private static Properties props = new Properties();
 
-    // to load
+    // to load the file
     static{
         try {
             props.load(new FileInputStream("src/test/config/config.properties"));
@@ -24,3 +24,6 @@ public class ConfigReader {
     }
 
 }
+
+
+//end point ekath meken read karanna

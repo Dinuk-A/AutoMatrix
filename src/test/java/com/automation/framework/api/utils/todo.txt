@@ -1,0 +1,38 @@
+# config file reader 
+
+# api handlings 
+    *get 
+    *post
+    *put 
+    *delete
+
+# test data reader
+    * read json test data
+
+
+                        ## FROM GPT ##
+                        
+# Logging Utility
+- Set up Log4j for logging API request/response details.
+
+# Response Validator
+- Implement response validation methods (status code, response body, headers).
+
+# Headers & Authentication Manager
+- Create methods to handle authentication (OAuth, API keys, tokens).
+- Implement reusable header management.
+
+# API Request Builder
+- Implement a flexible request builder for handling parameters, headers, and payloads.
+
+# Exception Handling
+- Create a custom exception handler for API failures and parsing issues.
+
+# Report Generation
+- Integrate Allure Reports for test execution reports.
+
+# Database Utility (Optional)
+- Implement a DB utility class if database verification is needed.
+
+# File Handling Utility (Optional)
+- Implement methods to manage test result storage and API response files.

@@ -1,0 +1,26 @@
+# Compiled files
+target/
+
+# IDE configurations
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Maven dependencies
+.m2/
+
+# Logs & reports
+logs/
+*.log
+allure-results/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Personal config files
+config.properties
+.env

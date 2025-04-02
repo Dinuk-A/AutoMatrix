@@ -22,5 +22,5 @@ allure-results/
 Thumbs.db
 
 # Personal config files
-config.properties
+src/test/resources/config.properties
 .env

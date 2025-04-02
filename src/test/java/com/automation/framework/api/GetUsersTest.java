@@ -1,30 +1,24 @@
-package com.automation.framework.api.tests;
-
-import org.testng.Assert;
-import static org.testng.Assert.assertEquals;
+package com.automation.framework.api;
 
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.utils.ConfigReader;
-import com.automation.framework.api.utils.GetApi;
+import com.automation.framework.api.ApiClient;
+import com.automation.framework.config.ConfigReader;
+import org.testng.Assert;
 
 import io.restassured.response.Response;
 
-//mvn test -Dtest=ApiTestGet  ✅✅✅
-public class ApiTestGet {
+//mvn test -Dtest=GetUsersTest  ✅✅✅
+public class GetUsersTest {
 
-     // capture the endpoint's URL
-     private static final String ENDPOINT_URL = ConfigReader.getProperty("endpoint.url");
+    // capture the endpoint's URL
+    private static final String ENDPOINT_URL = ConfigReader.getProperty("endpoint.url");
 
     @Test
-    public void testGetUsers() {
-
-        // end point ekath property file eken ganna one
-
-       
+    public void getAllUersTest() {
 
         // get the response
-        Response response = GetApi.getResponseBody(ENDPOINT_URL);
+        Response response = ApiClient.getRequest(ENDPOINT_URL);
 
         // verify the body
         System.out.println("Response Body: ");
@@ -35,8 +29,9 @@ public class ApiTestGet {
 
         // verify the status code
         Integer responseCode = response.getStatusCode();
-        assertEquals(responseCode, 200);
+        Assert.assertEquals(responseCode, 200);
         System.out.println(responseCode);
+        System.out.println("test ran");
 
         // USE ENUM FOR STATUS CODE
 
@@ -46,5 +41,4 @@ public class ApiTestGet {
         // POST ekedi check karanna one ewa ???
 
     }
-
 }

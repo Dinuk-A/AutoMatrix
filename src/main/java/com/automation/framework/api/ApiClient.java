@@ -1,17 +1,17 @@
-package com.automation.framework.api.utils;
+package com.automation.framework.api;
 
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
+import com.automation.framework.config.ConfigReader;
 
-//meka yanna one app/test eke
-//ApiTest.java
-//wrapper clz
 
-public class GetApi {
-
+public class ApiClient {
+    
+    //get the desired base url
     private static final String BASE_URL = ConfigReader.getProperty("base.url");
 
-    public static Response getResponseBody(String customEndPoint) {
+    //wrapper for GET reqs
+    public static Response getRequest(String customEndPoint) {
         return given()
                 .baseUri(BASE_URL)
                 .when()
@@ -20,6 +20,7 @@ public class GetApi {
                 .extract().response();
 
     }
+
 }
 
-// post walatath hadanna
+    //post , put , delete methods needs to be here too

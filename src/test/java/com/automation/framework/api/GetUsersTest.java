@@ -4,6 +4,9 @@ import org.testng.annotations.Test;
 
 import com.automation.framework.api.ApiClient;
 import com.automation.framework.config.ConfigReader;
+import com.automation.framework.utils.AssertionUtils;
+import com.automation.framework.utils.HttpStatusCode;
+
 import org.testng.Assert;
 
 import io.restassured.response.Response;
@@ -20,25 +23,28 @@ public class GetUsersTest {
         // get the response
         Response response = ApiClient.getRequest(ENDPOINT_URL);
 
-        // verify the body
+        // print the response body
         System.out.println("Response Body: ");
         System.out.println(response.getBody().asPrettyString());
 
-        // MEWA WENA WENAMA METHODS WALA LIYANNADA? 💥💥💥💥
-        // common methods for all hadenna one
-
         // verify the status code
-        Integer responseCode = response.getStatusCode();
-        Assert.assertEquals(responseCode, 200);
-        System.out.println(responseCode);
-        System.out.println("test ran");
+        int responseCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
 
-        // USE ENUM FOR STATUS CODE
+        // Assert the response time is under 2 seconds (2000 ms)
+        long responseTime = response.getTime();
+        AssertionUtils.assertResponseTime(responseTime, 2000); // You can set the max allowed time here
 
-        // ASSERTION WALATATH WENAMA METHODS
-        // 4 tama
+        // Assert that the content type is JSON
+        String contentType = response.getHeader("Content-Type");
+        AssertionUtils.assertContentType(contentType, "application/json");
 
-        // POST ekedi check karanna one ewa ???
+        System.out.println("Test ran successfully.");
 
     }
 }
+
+// ASSERTION WALATATH WENAMA METHODS
+// 4 tama
+
+// POST ekedi check karanna one ewa ???

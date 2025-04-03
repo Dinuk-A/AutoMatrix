@@ -17,6 +17,8 @@ public class GetUserByParamsTest {
     // capture the endpoint's URL
     private static final String QP_ENDPOINT_URL = ConfigReader.getProperty("qp.endpoint.url");
 
+    private static final String PP_ENDPOINT_URL = ConfigReader.getProperty("single.path.param.url");
+
     // 1 === single query params
     // https://jsonplaceholder.typicode.com/posts?userId=1
     // mvn test -Dtest=GetUserByParamsTest#getUserBySingleQueryParam ✅
@@ -37,7 +39,7 @@ public class GetUserByParamsTest {
         int responseCode = response.getStatusCode();
         AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
 
-        System.out.println("Test ran successfully.");
+        System.out.println("getUserBySingleQueryParam Test ran successfully.");
 
     }
 
@@ -61,23 +63,31 @@ public class GetUserByParamsTest {
         int responseCode = response.getStatusCode();
         AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
 
-        System.out.println("Test ran successfully.");
+        System.out.println(" getUserByMultiQueryParams Test ran successfully.");
 
     }
 
-    // queryParams.put("id", "4");
+    // 3 === single path param
+    // https://reqres.in/api/users/4
+    // mvn test -Dtest=GetUserByParamsTest#getUserBySinglePathParam
+    @Test
+    public void getUserBySinglePathParam() {
+        // call wrapper class
+        Response response = ApiClient.getReqWithSinglePathParam(PP_ENDPOINT_URL, "id", "4");
 
-    // 2
-    // single path param
-    /*
-     * Response response = getReqWithSinglePathParam("/users/{userId}", "userId",
-     * "123");
-     * System.out.println(response.getBody().asString());
-     * 
-     */
+        // print the body
+        System.out.println(response.getBody().asString());
 
-    // 3
-    // multiple path param
+        // verify the status code
+        int responseCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
+
+        System.out.println(" getUserBySinglePathParam Test ran successfully.");
+
+    }
+
+    // 4 === multiple path param 💥💥💥
+    // 
     /*
      * Map<String, String> pathParams = new HashMap<>();
      * pathParams.put("userId", "123");

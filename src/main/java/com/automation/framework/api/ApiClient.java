@@ -26,10 +26,8 @@ public class ApiClient {
 
     }
 
-    // wrapper for GET with MULTI QUERY PARAMS
-    // https://api.example.com/users?status=active&role=admin
-    // use json place holder typicode for test
-    // https://jsonplaceholder.typicode.com/posts?userId=1
+    // wrapper for GET with QUERY PARAMS ( single & multi ) ✅
+    // ex: https://api.example.com/users?status=active&role=admin
     public static Response getReqWithQueryParams(String customEndPoint, Map<String, String> paramsMap) {
         Response response = given()
                 .baseUri(BASE_URL_JSON_PLACEHOLDER)
@@ -42,8 +40,7 @@ public class ApiClient {
     }
 
     // wrapper for GET with SINGLE PATH PARAM
-    // https://api.example.com/users/123
-    // use req res for test
+    // https://reqres.in/api/users/4
     public static Response getReqWithSinglePathParam(String customEndPoint, String paramKey, String paramValue) {
         return given()
                 .baseUri(BASE_URL)
@@ -55,7 +52,7 @@ public class ApiClient {
     }
 
     // wrapper for GET with MULTI PATH PARAM
-    // GET https://api.example.com/users/123/orders/456
+    // ??? 💥💥💥
 
     public static Response getReqWithMultiplePathParams(String customEndPoint, Map<String, String> pathParams) {
         return given()

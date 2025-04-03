@@ -16,7 +16,6 @@ public class GetUserByParamsTest {
 
     // capture the endpoint's URL
     private static final String QP_ENDPOINT_URL = ConfigReader.getProperty("qp.endpoint.url");
-
     private static final String PP_ENDPOINT_URL = ConfigReader.getProperty("single.path.param.url");
 
     // 1 === single query params
@@ -43,7 +42,7 @@ public class GetUserByParamsTest {
 
     }
 
-    // 1 === single query params
+    // 1 === multiple query params
     // https://jsonplaceholder.typicode.com/posts?userId=1&id=4
     // mvn test -Dtest=GetUserByParamsTest#getUserByMultiQueryParams ✅
     @Test
@@ -69,7 +68,7 @@ public class GetUserByParamsTest {
 
     // 3 === single path param
     // https://reqres.in/api/users/4
-    // mvn test -Dtest=GetUserByParamsTest#getUserBySinglePathParam
+    // mvn test -Dtest=GetUserByParamsTest#getUserBySinglePathParam ✅
     @Test
     public void getUserBySinglePathParam() {
         // call wrapper class
@@ -85,6 +84,13 @@ public class GetUserByParamsTest {
         System.out.println(" getUserBySinglePathParam Test ran successfully.");
 
     }
+
+
+
+
+
+
+
 
     // 4 === multiple path param 💥💥💥
     // 

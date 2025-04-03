@@ -7,6 +7,9 @@ import java.util.Map;
 
 import com.automation.framework.config.ConfigReader;
 
+import io.restassured.http.ContentType;
+
+
 public class ApiClient {
 
     // this is for basic GETs
@@ -23,7 +26,6 @@ public class ApiClient {
                 .get(customEndPoint)
                 .then()
                 .extract().response();
-
     }
 
     // wrapper for GET with QUERY PARAMS ( single & multi ) ✅
@@ -53,13 +55,42 @@ public class ApiClient {
 
     // wrapper for GET with MULTI PATH PARAM
     // ??? 💥💥💥
-
     public static Response getReqWithMultiplePathParams(String customEndPoint, Map<String, String> pathParams) {
         return given()
                 .baseUri(BASE_URL)
                 .pathParams(pathParams)
                 .when()
                 .get(customEndPoint)
+                .then()
+                .extract().response();
+    }
+
+    // wrapper for no-payload, empty postreq??? 💥💥💥
+
+    // ##########################################################################
+
+    // POSTS ✅✅✅
+    // wrapper for basic POST with a json payload read from a file
+    public static Response postReqWithRawJson(String customEndPoint, String requestBodyJson) {
+        return given()
+                .baseUri(BASE_URL)
+                .contentType(ContentType.JSON)
+                .body(requestBodyJson)
+                .when()
+                .post(customEndPoint)
+                .then()
+                .extract().response();
+    }
+
+    // wrapper for POST with a header + payload
+    public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers, Object requestBody) {
+        return given()
+                .baseUri(BASE_URL)
+                .headers(headers) 
+                .contentType(ContentType.JSON)
+                .body(requestBody)
+                .when()
+                .post(customEndPoint)
                 .then()
                 .extract().response();
     }

@@ -9,7 +9,6 @@ import com.automation.framework.config.ConfigReader;
 
 import io.restassured.http.ContentType;
 
-
 public class ApiClient {
 
     // this is for basic GETs
@@ -66,11 +65,12 @@ public class ApiClient {
     }
 
     // wrapper for no-payload, empty postreq??? 💥💥💥
+    // override the payload 💥💥💥
 
     // ##########################################################################
 
     // POSTS ✅✅✅
-    // wrapper for basic POST with a json payload read from a file
+    // wrapper for basic POST with a json payload read from a file ✅
     public static Response postReqWithRawJson(String customEndPoint, String requestBodyJson) {
         return given()
                 .baseUri(BASE_URL)
@@ -82,11 +82,17 @@ public class ApiClient {
                 .extract().response();
     }
 
+    // Q💥💥💥
+    // ME METHOD EKA CALL KARANA THANA TYPE KARALA HARD CODED DATA DENAWADA BODY
+    // EKATA?
+    // User user = new User("joan",25); MEHEMA DATA DENAWADA???
+
     // wrapper for POST with a header + payload
-    public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers, Object requestBody) {
+    public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers,
+            Object requestBody) {
         return given()
                 .baseUri(BASE_URL)
-                .headers(headers) 
+                .headers(headers)
                 .contentType(ContentType.JSON)
                 .body(requestBody)
                 .when()
@@ -96,5 +102,9 @@ public class ApiClient {
     }
 
 }
+// values run time ekedi change karanna puluwan wenna one
+// json template eka witaray thiyaganne, 💥💥💥
 
 // post , put , delete methods needs to be here too
+
+// delete, patch

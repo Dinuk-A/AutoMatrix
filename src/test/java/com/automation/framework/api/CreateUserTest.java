@@ -21,7 +21,11 @@ public class CreateUserTest {
         String requestBody = JsonReader.readJsonFile("src/test/resources/data/UserData.json");
         Response response = ApiClient.postReqWithRawJson(ENDPOINT_URL, requestBody);
 
-        // check bosy
+        //values manual denna 💥💥💥
+        //json eke value nathath kamak na
+        //dif folders for dif projects 💥💥💥
+
+        // check body
         System.out.println(response.getBody().asPrettyString());
 
         // test status code
@@ -44,4 +48,8 @@ public class CreateUserTest {
         System.out.println("basicPostReq Test ran successfully.");
 
     }
+
+
+ 
+
 }

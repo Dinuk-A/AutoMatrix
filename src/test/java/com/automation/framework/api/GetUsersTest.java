@@ -33,13 +33,13 @@ public class GetUsersTest {
 
         // Assert the response time is under 2 seconds (2000 ms)
         long responseTime = response.getTime();
-        AssertionUtils.assertResponseTime(responseTime, 2000); // You can set the max allowed time here
+        AssertionUtils.assertResponseTime(responseTime, 2000);
 
         // Assert that the content type is JSON
         String contentType = response.getHeader("Content-Type");
         AssertionUtils.assertContentType(contentType, "application/json");
 
-        System.out.println("✅✅✅ Test ran successfully.");
+        System.out.println("Test ran successfully.");
 
     }
 }

@@ -9,9 +9,11 @@ import com.automation.framework.config.ConfigReader;
 
 public class ApiClient {
 
-    // get the desired base url
+    // this is for basic GETs
     private static final String BASE_URL = ConfigReader.getProperty("base.url");
-    private static final String BASE_URL_JSON_PLACEHOLDER = ConfigReader.getProperty("jp.url");
+
+    // this is for query param related GETs
+    private static final String BASE_URL_JSON_PLACEHOLDER = ConfigReader.getProperty("qp.url");
 
     // wrapper for BASIC GET reqs ✅
     public static Response getRequest(String customEndPoint) {
@@ -27,7 +29,7 @@ public class ApiClient {
     // wrapper for GET with MULTI QUERY PARAMS
     // https://api.example.com/users?status=active&role=admin
     // use json place holder typicode for test
-    //https://jsonplaceholder.typicode.com/posts?userId=1
+    // https://jsonplaceholder.typicode.com/posts?userId=1
     public static Response getReqWithQueryParams(String customEndPoint, Map<String, String> paramsMap) {
         Response response = given()
                 .baseUri(BASE_URL_JSON_PLACEHOLDER)

@@ -21,7 +21,7 @@ public class AssertionUtils {
     }
 
     // Assertion method for checking if the response body is empty
-    //this is particularly useful for DELETE or HEAD requests
+    // this is particularly useful for DELETE or HEAD requests
     public static void assertResponseBodyIsEmpty(String actualBody) {
         Assert.assertTrue(actualBody.isEmpty(), "Response body is not empty.");
     }
@@ -32,4 +32,12 @@ public class AssertionUtils {
                 "Expected Content-Type: " + expectedContentType + " but got: " + actualContentType);
     }
 
+    // MORE NEEDED 💥💥💥
+    // Checks if the response body contains the expected data.
+    // Verifies the presence of specific headers and their values.
+    
+    // Extracts values from a JSON response using JSON Path expressions, and
+    // compares the extracted data.
+
+    //Cookies
 }

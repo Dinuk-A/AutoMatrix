@@ -39,7 +39,7 @@ public class GetUsersTest {
         String contentType = response.getHeader("Content-Type");
         AssertionUtils.assertContentType(contentType, "application/json");
 
-        System.out.println("Test ran successfully.");
+        System.out.println("✅✅✅ Test ran successfully.");
 
     }
 }

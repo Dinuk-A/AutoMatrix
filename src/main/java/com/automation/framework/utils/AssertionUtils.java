@@ -2,6 +2,8 @@ package com.automation.framework.utils;
 
 import org.testng.Assert;
 
+
+//💥💥💥try to pass response directly inside them
 public class AssertionUtils {
 
     // Assertion method for status codes

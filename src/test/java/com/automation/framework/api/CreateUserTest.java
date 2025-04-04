@@ -49,6 +49,7 @@ public class CreateUserTest {
     //mvn test -Dtest=CreateUserTest#dynamicPostReqTest
     @Test
     public void dynamicPostReqTest() {
+        
         String reqBody = JsonReaderNew.readJsonFile("src/test/resources/data/UserDataNew.json", "John Doe",
                 "Software Engineer");
 

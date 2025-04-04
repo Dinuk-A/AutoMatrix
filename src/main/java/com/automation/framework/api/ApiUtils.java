@@ -65,7 +65,6 @@ public class ApiUtils {
     }
 
     // wrapper for no-payload, empty postreq??? 💥💥💥
-    // override the payload 💥💥💥
 
     // ##########################################################################
 
@@ -82,7 +81,7 @@ public class ApiUtils {
                 .extract().response();
     }
 
-       // wrapper for POST with a header + payload
+    // wrapper for POST with a header + payload
     public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers,
             Object requestBody) {
         return given()
@@ -92,6 +91,20 @@ public class ApiUtils {
                 .body(requestBody)
                 .when()
                 .post(customEndPoint)
+                .then()
+                .extract().response();
+    }
+
+    // ##########################################################################
+
+    // PUTs
+    public static Response putRequestWithRawJson(String customEndPoint, String requestBodyJson) {
+        return given()
+                .baseUri(BASE_URL)
+                .contentType(ContentType.JSON)
+                .body(requestBodyJson)
+                .when()
+                .put(customEndPoint)
                 .then()
                 .extract().response();
     }

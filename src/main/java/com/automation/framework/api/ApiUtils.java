@@ -109,8 +109,22 @@ public class ApiUtils {
                 .extract().response();
     }
 
+       // ##########################################################################
+
+       //DELETEs
+       public static Response deleteRequest(String customEndPoint) {
+        return given()
+                .baseUri(BASE_URL)
+                .when()
+                .delete(customEndPoint)
+                .then()
+                .extract().response();
+    }
+    
+
+
 }
 
-// post , put , delete methods needs to be here too
+//  delete methods needs to be here too
 
 // delete, patch

@@ -37,7 +37,7 @@ public class AssertionUtils {
     // MORE NEEDED 💥💥💥
     // Checks if the response body contains the expected data.
     // Verifies the presence of specific headers and their values.
-    
+    //check if body is empty(in puts or in deletes)
     // Extracts values from a JSON response using JSON Path expressions, and
     // compares the extracted data.
 

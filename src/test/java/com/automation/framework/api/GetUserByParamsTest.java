@@ -29,7 +29,7 @@ public class GetUserByParamsTest {
         queryParams.put("userId", "1");
 
         // call wrapper class
-        Response response = ApiClient.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
+        Response response = ApiUtils.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
 
         // print the body
         System.out.println(response.getBody().asString());
@@ -53,7 +53,7 @@ public class GetUserByParamsTest {
         queryParams.put("id", "4");
 
         // call wrapper class
-        Response response = ApiClient.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
+        Response response = ApiUtils.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
 
         // print the body
         System.out.println(response.getBody().asString());
@@ -72,7 +72,7 @@ public class GetUserByParamsTest {
     @Test
     public void getUserBySinglePathParam() {
         // call wrapper class
-        Response response = ApiClient.getReqWithSinglePathParam(PP_ENDPOINT_URL, "id", "4");
+        Response response = ApiUtils.getReqWithSinglePathParam(PP_ENDPOINT_URL, "id", "4");
 
         // print the body
         System.out.println(response.getBody().asString());

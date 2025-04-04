@@ -9,7 +9,7 @@ import com.automation.framework.config.ConfigReader;
 
 import io.restassured.http.ContentType;
 
-public class ApiClient {
+public class ApiUtils {
 
     // this is for basic GETs
     private static final String BASE_URL = ConfigReader.getProperty("base.url");
@@ -82,12 +82,7 @@ public class ApiClient {
                 .extract().response();
     }
 
-    // Q💥💥💥
-    // ME METHOD EKA CALL KARANA THANA TYPE KARALA HARD CODED DATA DENAWADA BODY
-    // EKATA?
-    // User user = new User("joan",25); MEHEMA DATA DENAWADA???
-
-    // wrapper for POST with a header + payload
+       // wrapper for POST with a header + payload
     public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers,
             Object requestBody) {
         return given()
@@ -102,8 +97,6 @@ public class ApiClient {
     }
 
 }
-// values run time ekedi change karanna puluwan wenna one
-// json template eka witaray thiyaganne, 💥💥💥
 
 // post , put , delete methods needs to be here too
 

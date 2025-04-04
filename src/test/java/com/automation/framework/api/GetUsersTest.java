@@ -2,7 +2,7 @@ package com.automation.framework.api;
 
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.ApiClient;
+import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
 import com.automation.framework.utils.HttpStatusCode;
@@ -21,7 +21,7 @@ public class GetUsersTest {
     public void getAllUersTest() {
 
         // get the response
-        Response response = ApiClient.getRequest(ENDPOINT_URL);
+        Response response = ApiUtils.getRequest(ENDPOINT_URL);
 
         // print the response body
         System.out.println("Response Body: ");

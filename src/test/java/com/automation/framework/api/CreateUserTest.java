@@ -7,6 +7,7 @@ import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
 import com.automation.framework.utils.HttpStatusCode;
 import com.automation.framework.utils.JsonReader;
+import com.automation.framework.utils.JsonReaderNew;
 
 import io.restassured.response.Response;
 
@@ -19,11 +20,7 @@ public class CreateUserTest {
     @Test
     public void basicPostReq() {
         String requestBody = JsonReader.readJsonFile("src/test/resources/data/UserData.json");
-        Response response = ApiClient.postReqWithRawJson(ENDPOINT_URL, requestBody);
-
-        //values manual denna 💥💥💥
-        //json eke value nathath kamak na
-        //dif folders for dif projects 💥💥💥
+        Response response = ApiUtils.postReqWithRawJson(ENDPOINT_URL, requestBody);
 
         // check body
         System.out.println(response.getBody().asPrettyString());
@@ -40,7 +37,7 @@ public class CreateUserTest {
         String contentType = response.getHeader("Content-Type");
         AssertionUtils.assertContentType(contentType, "application/json");
 
-        //NO ASSERTUTIL METHOD for this 💥
+        // NO ASSERTUTIL METHOD for this 💥
         // check the returned user details matches the exact values
         String userName = response.jsonPath().getString("name");
         Assert.assertEquals("Dinuka Pramod", userName);
@@ -49,7 +46,21 @@ public class CreateUserTest {
 
     }
 
+    //mvn test -Dtest=CreateUserTest#dynamicPostReqTest
+    @Test
+    public void dynamicPostReqTest() {
+        String reqBody = JsonReaderNew.readJsonFile("src/test/resources/data/UserDataNew.json", "John Doe",
+                "Software Engineer");
 
- 
+        Response response = ApiUtils.postReqWithRawJson(ENDPOINT_URL, reqBody);
+
+        System.out.println(response.getBody().asPrettyString());
+
+        // Test status code
+        int statusCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.CREATED.getCode());
+
+        System.out.println("dynamicPostReqTest success");
+    }
 
 }

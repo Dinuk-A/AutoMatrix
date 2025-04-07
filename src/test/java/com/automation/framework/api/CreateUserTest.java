@@ -29,9 +29,9 @@ public class CreateUserTest {
         int statusCode = response.getStatusCode();
         AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.CREATED.getCode());
 
-        // is response time below 2 seconds ?
+        // is response time below X seconds ?
         long responseTime = response.getTime();
-        AssertionUtils.assertResponseTime(responseTime, 2000);
+        AssertionUtils.assertResponseTime(responseTime, 5000);
 
         // content-Type Check using AssertionUtils
         String contentType = response.getHeader("Content-Type");

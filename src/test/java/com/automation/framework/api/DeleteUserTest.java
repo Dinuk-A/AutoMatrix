@@ -13,6 +13,7 @@ public class DeleteUserTest {
     private static final String ENDPOINT_URL = ConfigReader.getProperty("put.endpoint.url");
 
     //mvn test -Dtest=DeleteUserTest#deleteRequest
+    //no body returned
     @Test
     public void deleteRequest() {
 

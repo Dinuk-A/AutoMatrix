@@ -25,8 +25,8 @@ public class UpdateUserTest {
         System.out.println(response.getBody().asPrettyString());
 
         // test status code
-        int statusCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.OK.getCode());
+        //int statusCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
 
          System.out.println("basicPutReq Test ran successfully.");
     }

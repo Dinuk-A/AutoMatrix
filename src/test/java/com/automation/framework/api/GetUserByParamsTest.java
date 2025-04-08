@@ -35,8 +35,8 @@ public class GetUserByParamsTest {
         System.out.println(response.getBody().asString());
 
         // verify the status code
-        int responseCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
+        //int responseCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
 
         System.out.println("getUserBySingleQueryParam Test ran successfully.");
 
@@ -59,8 +59,8 @@ public class GetUserByParamsTest {
         System.out.println(response.getBody().asString());
 
         // verify the status code
-        int responseCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
+        //int responseCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
 
         System.out.println(" getUserByMultiQueryParams Test ran successfully.");
 
@@ -78,8 +78,8 @@ public class GetUserByParamsTest {
         System.out.println(response.getBody().asString());
 
         // verify the status code
-        int responseCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
+        //int responseCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
 
         System.out.println(" getUserBySinglePathParam Test ran successfully.");
 

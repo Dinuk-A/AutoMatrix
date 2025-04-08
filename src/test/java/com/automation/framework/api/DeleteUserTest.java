@@ -19,8 +19,8 @@ public class DeleteUserTest {
 
         Response response = ApiUtils.deleteRequest(ENDPOINT_URL);
 
-        int statusCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.NO_CONTENT.getCode());
+        //int statusCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.NO_CONTENT.getCode());
 
         AssertionUtils.assertResponseBodyIsEmpty(response.getBody().asString());
 

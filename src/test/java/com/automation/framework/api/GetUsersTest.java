@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
+import com.automation.framework.utils.CommonMethods;
 import com.automation.framework.utils.HttpStatusCode;
 import io.qameta.allure.*;
 
@@ -12,13 +13,15 @@ import org.testng.Assert;
 
 import io.restassured.response.Response;
 
+//to clear prrevious allur jsons >> Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=GetUsersTest
+
 //mvn test -Dtest=GetUsersTest  ✅✅✅
 public class GetUsersTest {
 
     // capture the endpoint's URL
     private static final String ENDPOINT_URL = ConfigReader.getProperty("endpoint.url");
 
-    //for allur
+    // for allur
     @Epic("testing allur, user mgt")
     @Feature("User Retrieval")
     @Story("Fetch all users from the system")
@@ -30,21 +33,24 @@ public class GetUsersTest {
         // get the response
         Response response = ApiUtils.getRequest(ENDPOINT_URL);
 
-        // print the response body
-        System.out.println("Response Body: ");
-        System.out.println(response.getBody().asPrettyString());
+        // print the response body 💥
+        CommonMethods.printResponseBody(response);
 
         // verify the status code
-        int responseCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(responseCode, HttpStatusCode.OK.getCode());
+        // int responseCode = response.getStatusCode();
+        // new💥
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
 
         // Assert the response time is under 5 seconds (5000 ms)
-        //long responseTime = response.getTime();
-        //AssertionUtils.assertResponseTime(responseTime, 5000);
+        // long responseTime = response.getTime();
+        // AssertionUtils.assertResponseTime(responseTime, 5000);
 
-        // Assert that the content type is JSON
-        String contentType = response.getHeader("Content-Type");
-        AssertionUtils.assertContentType(contentType, "application/json");
+        // Assert that the content type is JSON original
+        // String contentType = response.getHeader("Content-Type");
+        // AssertionUtils.assertContentType(contentType, "application/json");
+
+        // new 💥
+        AssertionUtils.assertContentType(response, "application/json");
 
         System.out.println("Test ran successfully.");
 

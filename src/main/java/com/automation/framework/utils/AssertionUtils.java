@@ -2,12 +2,20 @@ package com.automation.framework.utils;
 
 import org.testng.Assert;
 
+import io.restassured.response.Response;
+
 
 //💥💥💥try to pass response directly inside them
 public class AssertionUtils {
 
-    // Assertion method for status codes
-    public static void assertStatusCode(int actualCode, int expectedCode) {
+    // Assertion method for status codes original ✅
+    //public static void assertStatusCode(int actualCode, int expectedCode) {
+    //    Assert.assertEquals(actualCode, expectedCode, "Status code is not as expected.");
+    //}
+
+    //new
+    public static void assertStatusCode(Response response, int expectedCode) {
+        int actualCode = response.getStatusCode();
         Assert.assertEquals(actualCode, expectedCode, "Status code is not as expected.");
     }
 
@@ -29,7 +37,8 @@ public class AssertionUtils {
     }
 
     // Assertion method for checking content type
-    public static void assertContentType(String actualContentType, String expectedContentType) {
+    public static void assertContentType(Response response, String expectedContentType) {
+        String actualContentType = response.getHeader("Content-Type");
         Assert.assertTrue(actualContentType.contains(expectedContentType),
                 "Expected Content-Type: " + expectedContentType + " but got: " + actualContentType);
     }

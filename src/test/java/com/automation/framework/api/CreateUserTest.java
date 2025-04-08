@@ -26,16 +26,16 @@ public class CreateUserTest {
         System.out.println(response.getBody().asPrettyString());
 
         // test status code
-        int statusCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.CREATED.getCode());
+        //int statusCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
 
         // is response time below X seconds ?
         long responseTime = response.getTime();
         AssertionUtils.assertResponseTime(responseTime, 5000);
 
         // content-Type Check using AssertionUtils
-        String contentType = response.getHeader("Content-Type");
-        AssertionUtils.assertContentType(contentType, "application/json");
+        //String contentType = response.getHeader("Content-Type");
+        AssertionUtils.assertContentType(response, "application/json");
 
         // NO ASSERTUTIL METHOD for this 💥
         // check the returned user details matches the exact values
@@ -58,8 +58,8 @@ public class CreateUserTest {
         System.out.println(response.getBody().asPrettyString());
 
         // Test status code
-        int statusCode = response.getStatusCode();
-        AssertionUtils.assertStatusCode(statusCode, HttpStatusCode.CREATED.getCode());
+        //int statusCode = response.getStatusCode();
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
 
         System.out.println("dynamicPostReqTest success");
     }

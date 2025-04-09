@@ -58,7 +58,6 @@ public class CreateUserTest {
         System.out.println(response.getBody().asPrettyString());
 
         // Test status code
-        //int statusCode = response.getStatusCode();
         AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
 
         System.out.println("dynamicPostReqTest success");

@@ -81,6 +81,19 @@ public class ApiUtils {
                 .extract().response();
     }
 
+    //to customize the base uri too 💥💥💥💥💥
+    //NO BASE URL
+    public static Response postReqWithRawJsonNew(String customBaseUri,String customEndPoint, String requestBodyJson) {
+        return given()
+                .baseUri(customBaseUri)
+                .contentType(ContentType.JSON)
+                .body(requestBodyJson)
+                .when()
+                .post(customEndPoint)
+                .then()
+                .extract().response();
+    }
+
     // wrapper for POST with a header + payload
     public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers,
             Object requestBody) {

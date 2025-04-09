@@ -40,6 +40,18 @@ public class ApiUtils {
         return response;
     }
 
+    //for sempsarc 💥💥💥💥💥
+    public static Response getReqWithQueryParamsForSempSarc(String customBaseUri,String customEndPoint, Map<String, String> paramsMap) {
+        Response response = given()
+                .baseUri(customBaseUri)
+                .queryParams(paramsMap)
+                .when()
+                .get(customEndPoint)
+                .then()
+                .extract().response();
+        return response;
+    }
+
     // wrapper for GET with SINGLE PATH PARAM
     // https://reqres.in/api/users/4
     public static Response getReqWithSinglePathParam(String customEndPoint, String paramKey, String paramValue) {

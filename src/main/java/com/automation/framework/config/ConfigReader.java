@@ -26,32 +26,27 @@ public class ConfigReader {
     // return props.getProperty(key);
     // }
 
-    public class ConfigReader {
-    
-        private static Properties props = new Properties();
-    
-        static {
-            try {
-                // Debugging: print the current working directory
-                System.out.println("Classpath location: " + System.getProperty("user.dir"));
-                
-                System.out.println("Loading config.properties...");
-                // Make sure to load from classpath
-                InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties");
-                
-                if (input == null) {
-                    throw new RuntimeException("❌ config.properties file not found in classpath!");
-                }
-                props.load(input);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to load config file", e);
+    private static Properties props = new Properties();
+
+    static {
+        try {
+            // Debugging: print the current working directory
+            System.out.println("Classpath location: " + System.getProperty("user.dir"));
+
+            System.out.println("Loading config.properties...");
+            // Make sure to load from classpath
+            InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties");
+
+            if (input == null) {
+                throw new RuntimeException("❌ config.properties file not found in classpath!");
             }
-        }
-    
-        public static String getProperty(String key) {
-            return props.getProperty(key);
+            props.load(input);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load config file", e);
         }
     }
-    
 
+    public static String getProperty(String key) {
+        return props.getProperty(key);
+    }
 }

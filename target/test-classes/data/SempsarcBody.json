@@ -1,6 +1,0 @@
-{
-    "clientId": "{{clientId}}",
-    "password": "{{password}}",
-    "userId": "{{userId}}",
-    "tradingAPIHubId": "SEMPSARC"
-}

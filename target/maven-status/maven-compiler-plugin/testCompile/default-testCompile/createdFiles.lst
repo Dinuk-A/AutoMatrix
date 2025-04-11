@@ -1,0 +1,6 @@
+com\automation\framework\api\projectA\FIrstTest.class
+com\automation\framework\api\DeleteUserTest.class
+com\automation\framework\api\CreateUserTest.class
+com\automation\framework\api\GetUserByParamsTest.class
+com\automation\framework\api\GetUsersTest.class
+com\automation\framework\api\UpdateUserTest.class

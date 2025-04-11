@@ -1,5 +1,5 @@
 # Compiled files
-target/
+#target/
 
 # IDE configurations
 .vscode/

@@ -26,31 +26,32 @@ public class ConfigReader {
     // return props.getProperty(key);
     // }
 
-    private static final Properties props = new Properties();
-
-    static {
-        try {
-            System.out.println("🔍 Trying to load config.properties from classpath...");
-
-            ClassLoader classLoader = ConfigReader.class.getClassLoader();
-            InputStream input = classLoader.getResourceAsStream("config.properties");
-
-            if (input == null) {
-                throw new RuntimeException("❌ config.properties file not found in classpath!");
+    public class ConfigReader {
+    
+        private static Properties props = new Properties();
+    
+        static {
+            try {
+                // Debugging: print the current working directory
+                System.out.println("Classpath location: " + System.getProperty("user.dir"));
+                
+                System.out.println("Loading config.properties...");
+                // Make sure to load from classpath
+                InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties");
+                
+                if (input == null) {
+                    throw new RuntimeException("❌ config.properties file not found in classpath!");
+                }
+                props.load(input);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to load config file", e);
             }
-
-            props.load(input);
-            System.out.println("✅ config.properties loaded successfully.");
-
-        } catch (Exception e) {
-            System.err.println("🚨 Failed to load config.properties: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Failed to load config file", e);
+        }
+    
+        public static String getProperty(String key) {
+            return props.getProperty(key);
         }
     }
-
-    public static String getProperty(String key) {
-        return props.getProperty(key);
-    }
+    
 
 }

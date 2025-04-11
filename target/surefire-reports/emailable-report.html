@@ -9,53 +9,10 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Surefire suite</th></tr>
-<tr><td><a href="#t0">Surefire test</a></td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">44,669</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Surefire test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">2,032</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.automation.framework.api.projectA.FIrstTest</td><td><a href="#m0">sempsarcGetStreamWithTimeout</a></td><td rowspan="1">1744371736331</td><td rowspan="1">35005</td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">com.automation.framework.api.CreateUserTest</td><td><a href="#m1">basicPostReq</a></td><td rowspan="1">1744371727395</td><td rowspan="1">3033</td></tr><tr class="passedeven"><td><a href="#m2">dynamicPostReqTest</a></td><td rowspan="1">1744371730504</td><td rowspan="1">684</td></tr><tr class="passedodd"><td rowspan="1">com.automation.framework.api.DeleteUserTest</td><td><a href="#m3">deleteRequest</a></td><td rowspan="1">1744371731195</td><td rowspan="1">645</td></tr><tr class="passedeven"><td rowspan="3">com.automation.framework.api.GetUserByParamsTest</td><td><a href="#m4">getUserByMultiQueryParams</a></td><td rowspan="1">1744371731843</td><td rowspan="1">982</td></tr><tr class="passedeven"><td><a href="#m5">getUserBySinglePathParam</a></td><td rowspan="1">1744371732829</td><td rowspan="1">261</td></tr><tr class="passedeven"><td><a href="#m6">getUserBySingleQueryParam</a></td><td rowspan="1">1744371733095</td><td rowspan="1">276</td></tr><tr class="passedodd"><td rowspan="1">com.automation.framework.api.GetUsersTest</td><td><a href="#m7">getAllUersTest</a></td><td rowspan="1">1744371733373</td><td rowspan="1">306</td></tr><tr class="passedeven"><td rowspan="1">com.automation.framework.api.UpdateUserTest</td><td><a href="#m8">basicPutReq</a></td><td rowspan="1">1744371771347</td><td rowspan="1">675</td></tr><tr class="passedodd"><td rowspan="1">com.automation.framework.api.projectA.FIrstTest</td><td><a href="#m9">retrieveTokenByPost</a></td><td rowspan="1">1744371733684</td><td rowspan="1">2645</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.automation.framework.api.GetUsersTest</td><td><a href="#m0">getAllUersTest</a></td><td rowspan="1">1744372447063</td><td rowspan="1">1932</td></tr></tbody>
 </table>
-<h2>Surefire test</h2><h3 id="m0">com.automation.framework.api.projectA.FIrstTest#sempsarcGetStreamWithTimeout</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.internal.thread.ThreadTimeoutException: Method com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout() didn&apos;t finish within the time-out 35000
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:46)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.tryRead(NioSocketImpl.java:266)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:317)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
-	at java.base@17.0.9/java.net.Socket$SocketInputStream.read(Socket.java:966)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161)
-	at app//org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:276)
-	at app//org.apache.http.impl.io.ChunkedInputStream.getChunkSize(ChunkedInputStream.java:261)
-	at app//org.apache.http.impl.io.ChunkedInputStream.nextChunk(ChunkedInputStream.java:222)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:183)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:210)
-	at app//org.apache.http.impl.io.ChunkedInputStream.close(ChunkedInputStream.java:312)
-	at app//org.apache.http.conn.BasicManagedEntity.streamClosed(BasicManagedEntity.java:166)
-	at app//org.apache.http.conn.EofSensorInputStream.checkClose(EofSensorInputStream.java:228)
-	at app//org.apache.http.conn.EofSensorInputStream.close(EofSensorInputStream.java:172)
-	at app//io.restassured.internal.support.CloseHTTPClientConnectionInputStreamWrapper.close(CloseHTTPClientConnectionInputStreamWrapper.java:71)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.implClose(StreamDecoder.java:366)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.close(StreamDecoder.java:204)
-	at java.base@17.0.9/java.io.InputStreamReader.close(InputStreamReader.java:192)
-	at java.base@17.0.9/java.io.BufferedReader.close(BufferedReader.java:525)
-	at app//com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout(FIrstTest.java:136)
-	at java.base@17.0.9/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base@17.0.9/java.lang.Thread.run(Thread.java:842)
-... Removed 8 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.automation.framework.api.CreateUserTest#basicPostReq</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.automation.framework.api.CreateUserTest#dynamicPostReqTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.automation.framework.api.DeleteUserTest#deleteRequest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">com.automation.framework.api.GetUserByParamsTest#getUserByMultiQueryParams</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">com.automation.framework.api.GetUserByParamsTest#getUserBySinglePathParam</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">com.automation.framework.api.GetUserByParamsTest#getUserBySingleQueryParam</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m7">com.automation.framework.api.GetUsersTest#getAllUersTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m8">com.automation.framework.api.UpdateUserTest#basicPutReq</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m9">com.automation.framework.api.projectA.FIrstTest#retrieveTokenByPost</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Surefire test</h2><h3 id="m0">com.automation.framework.api.GetUsersTest#getAllUersTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

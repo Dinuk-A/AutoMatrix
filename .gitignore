@@ -1,5 +1,5 @@
 # Compiled files
-#target/
+target/
 
 # IDE configurations
 .vscode/
@@ -22,5 +22,5 @@ allure-results/
 Thumbs.db
 
 # Personal config files
-src/test/resources/config.properties
+#src/test/resources/config.properties
 .env

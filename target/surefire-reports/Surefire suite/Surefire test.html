@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>9/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Apr 11 17:12:07 IST 2025</td>
+<td>Started on:</td><td>Fri Apr 11 17:24:07 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>44 seconds (44669 ms)</td>
+<tr><td>Total time:</td><td>2 seconds (2032 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,97 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout()'><b>sempsarcGetStreamWithTimeout</b><br>Test class: com.automation.framework.api.projectA.FIrstTest</td>
-<td><div><pre>org.testng.internal.thread.ThreadTimeoutException: Method com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout() didn&apos;t finish within the time-out 35000
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:46)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.tryRead(NioSocketImpl.java:266)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:317)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
-	at java.base@17.0.9/java.net.Socket$SocketInputStream.read(Socket.java:966)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161)
-	at app//org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:276)
-	at app//org.apache.http.impl.io.ChunkedInputStream.getChunkSize(ChunkedInputStream.java:261)
-	at app//org.apache.http.impl.io.ChunkedInputStream.nextChunk(ChunkedInputStream.java:222)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:183)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:210)
-	at app//org.apache.http.impl.io.ChunkedInputStream.close(ChunkedInputStream.java:312)
-	at app//org.apache.http.conn.BasicManagedEntity.streamClosed(BasicManagedEntity.java:166)
-	at app//org.apache.http.conn.EofSensorInputStream.checkClose(EofSensorInputStream.java:228)
-	at app//org.apache.http.conn.EofSensorInputStream.close(EofSensorInputStream.java:172)
-	at app//io.restassured.internal.support.CloseHTTPClientConnectionInputStreamWrapper.close(CloseHTTPClientConnectionInputStreamWrapper.java:71)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.implClose(StreamDecoder.java:366)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.close(StreamDecoder.java:204)
-	at java.base@17.0.9/java.io.InputStreamReader.close(InputStreamReader.java:192)
-	at java.base@17.0.9/java.io.BufferedReader.close(BufferedReader.java:525)
-	at app//com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout(FIrstTest.java:136)
-	at java.base@17.0.9/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base@17.0.9/java.lang.Thread.run(Thread.java:842)
-... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace925131177", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace925131177'><pre>org.testng.internal.thread.ThreadTimeoutException: Method com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout() didn&apos;t finish within the time-out 35000
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read0(Native Method)
-	at java.base@17.0.9/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:46)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.tryRead(NioSocketImpl.java:266)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:317)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
-	at java.base@17.0.9/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
-	at java.base@17.0.9/java.net.Socket$SocketInputStream.read(Socket.java:966)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
-	at java.base@17.0.9/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1065)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:161)
-	at app//org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:82)
-	at app//org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:276)
-	at app//org.apache.http.impl.io.ChunkedInputStream.getChunkSize(ChunkedInputStream.java:261)
-	at app//org.apache.http.impl.io.ChunkedInputStream.nextChunk(ChunkedInputStream.java:222)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:183)
-	at app//org.apache.http.impl.io.ChunkedInputStream.read(ChunkedInputStream.java:210)
-	at app//org.apache.http.impl.io.ChunkedInputStream.close(ChunkedInputStream.java:312)
-	at app//org.apache.http.conn.BasicManagedEntity.streamClosed(BasicManagedEntity.java:166)
-	at app//org.apache.http.conn.EofSensorInputStream.checkClose(EofSensorInputStream.java:228)
-	at app//org.apache.http.conn.EofSensorInputStream.close(EofSensorInputStream.java:172)
-	at app//io.restassured.internal.support.CloseHTTPClientConnectionInputStreamWrapper.close(CloseHTTPClientConnectionInputStreamWrapper.java:71)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.implClose(StreamDecoder.java:366)
-	at java.base@17.0.9/sun.nio.cs.StreamDecoder.close(StreamDecoder.java:204)
-	at java.base@17.0.9/java.io.InputStreamReader.close(InputStreamReader.java:192)
-	at java.base@17.0.9/java.io.BufferedReader.close(BufferedReader.java:525)
-	at app//com.automation.framework.api.projectA.FIrstTest.sempsarcGetStreamWithTimeout(FIrstTest.java:136)
-	at java.base@17.0.9/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base@17.0.9/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base@17.0.9/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base@17.0.9/java.lang.reflect.Method.invoke(Method.java:568)
-	at app//org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at app//org.testng.internal.invokers.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:47)
-	at app//org.testng.internal.invokers.InvokeMethodRunnable.call(InvokeMethodRunnable.java:73)
-	at app//org.testng.internal.invokers.InvokeMethodRunnable.call(InvokeMethodRunnable.java:11)
-	at java.base@17.0.9/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base@17.0.9/java.lang.Thread.run(Thread.java:842)
-</pre></div></td>
-<td>35</td>
-<td>com.automation.framework.api.projectA.FIrstTest@4cc8eb05</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -167,50 +76,10 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.automation.framework.api.projectA.FIrstTest.retrieveTokenByPost()'><b>retrieveTokenByPost</b><br>Test class: com.automation.framework.api.projectA.FIrstTest</td>
-<td></td>
-<td>2</td>
-<td>com.automation.framework.api.projectA.FIrstTest@4cc8eb05</td></tr>
-<tr>
-<td title='com.automation.framework.api.GetUserByParamsTest.getUserBySinglePathParam()'><b>getUserBySinglePathParam</b><br>Test class: com.automation.framework.api.GetUserByParamsTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.GetUserByParamsTest@2abf4075</td></tr>
-<tr>
-<td title='com.automation.framework.api.GetUserByParamsTest.getUserBySingleQueryParam()'><b>getUserBySingleQueryParam</b><br>Test class: com.automation.framework.api.GetUserByParamsTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.GetUserByParamsTest@2abf4075</td></tr>
-<tr>
 <td title='com.automation.framework.api.GetUsersTest.getAllUersTest()'><b>getAllUersTest</b><br>Test class: com.automation.framework.api.GetUsersTest</td>
 <td></td>
-<td>0</td>
-<td>com.automation.framework.api.GetUsersTest@770d3326</td></tr>
-<tr>
-<td title='com.automation.framework.api.UpdateUserTest.basicPutReq()'><b>basicPutReq</b><br>Test class: com.automation.framework.api.UpdateUserTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.UpdateUserTest@51f116b8</td></tr>
-<tr>
-<td title='com.automation.framework.api.GetUserByParamsTest.getUserByMultiQueryParams()'><b>getUserByMultiQueryParams</b><br>Test class: com.automation.framework.api.GetUserByParamsTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.GetUserByParamsTest@2abf4075</td></tr>
-<tr>
-<td title='com.automation.framework.api.CreateUserTest.basicPostReq()'><b>basicPostReq</b><br>Test class: com.automation.framework.api.CreateUserTest</td>
-<td></td>
-<td>3</td>
-<td>com.automation.framework.api.CreateUserTest@6a6afff2</td></tr>
-<tr>
-<td title='com.automation.framework.api.DeleteUserTest.deleteRequest()'><b>deleteRequest</b><br>Test class: com.automation.framework.api.DeleteUserTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.DeleteUserTest@6a370f4</td></tr>
-<tr>
-<td title='com.automation.framework.api.CreateUserTest.dynamicPostReqTest()'><b>dynamicPostReqTest</b><br>Test class: com.automation.framework.api.CreateUserTest</td>
-<td></td>
-<td>0</td>
-<td>com.automation.framework.api.CreateUserTest@6a6afff2</td></tr>
+<td>1</td>
+<td>com.automation.framework.api.GetUsersTest@7e9131d5</td></tr>
 </table><p>
 </body>
 </html>

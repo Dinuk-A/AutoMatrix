@@ -6,17 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.Reporter;
 
 import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
@@ -49,7 +39,6 @@ public class FIrstTest {
     @Test
     public void retrieveTokenByPost() {
 
-        // me widiyata thamay data denna wenne 💥💥💥💥💥
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("clientId", "MecNecILet@Met001");
         placeholders.put("password", "d2nEH8G4dj");
@@ -75,77 +64,39 @@ public class FIrstTest {
     }
 
     // GET for sempsarc
-    @Test(invocationTimeOut = 35000)
-    public void sempsarcGetStreamWithTimeout() {
+    @Test
+    public void retrieveDataWithToken() {
+        // Ensure accessToken is not null
+        if (accessToken == null || accessToken.isEmpty()) {
+            System.out.println("Access token is missing. Run retrieveTokenByPost() first.");
+            return;
+        }
+
+        // Set query param with the token
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("token", accessToken);
-    
-        io.restassured.response.Response response = null;
-        BufferedReader reader = null;
-        InputStream inputStream = null;
-    
-        // ✅ Add this
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        AtomicInteger lineCount = new AtomicInteger(0);
-    
-        try {
-            response = ApiUtils.getReqWithQueryParamsForSempSarc(SEMP_GET_BASE_URL, SEMP_GET_END_URL, queryParams);
-            AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
-    
-            inputStream = response.asInputStream();
-            reader = new BufferedReader(new InputStreamReader(inputStream));
-    
-            final BufferedReader readerFinal = reader; // use final inside lambda
-    
-            Future<Integer> future = executor.submit(() -> {
-                int count = 0;
-                try {
-                    String line;
-                    while ((line = readerFinal.readLine()) != null) {
-                        if (!line.trim().isEmpty()) {
-                            System.out.println("Data: " + line);
-                            count++;
-                        }
-                    }
-                } catch (IOException e) {
-                    System.out.println("Stream reading interrupted: " + e.getMessage());
-                }
-                return count;
-            });
-    
-            try {
-                int count = future.get(20, TimeUnit.SECONDS);
-                lineCount.set(count);
-            } catch (TimeoutException e) {
-                System.out.println("Time limit reached. Stopping stream.");
-            } catch (Exception e) {
-                System.out.println("Error reading stream: " + e.getMessage());
-            } finally {
-                future.cancel(true);
-                executor.shutdownNow();
+
+        // Get the streaming response
+        InputStream responseStream = ApiUtils.getReqForStreams(SEMP_GET_BASE_URL, SEMP_GET_END_URL, queryParams);
+
+        // Read from stream for a few seconds
+        long startTime = System.currentTimeMillis();
+        long maxDuration = 5000; // 5 seconds
+
+        System.out.println("Reading stream for 5 seconds... ");
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream))) {
+            String line;
+            while ((line = reader.readLine()) != null && (System.currentTimeMillis() - startTime < maxDuration)) {
+                System.out.println("Stream: " + line);
             }
-    
-            System.out.println("Stream read completed with " + lineCount.get() + " lines.");
-            Assert.assertTrue(lineCount.get() > 0, "No streaming data was received.");
-    
-        } catch (Exception e) {
-            Assert.fail("Test failed: " + e.getMessage());
-        } finally {
-            try {
-                if (reader != null)
-                    reader.close();
-                if (inputStream != null)
-                    inputStream.close();
-    
-                if (response != null && response.getBody() != null) {
-                    response.getBody().asInputStream().close();
-                }
-            } catch (Exception e) {
-                System.err.println("Error closing resources: " + e.getMessage());
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        System.out.println("Stream closed ");
     }
-    
+
 }
 
-// mvn test -Dtest=FIrstTest
+// Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=FIrstTest

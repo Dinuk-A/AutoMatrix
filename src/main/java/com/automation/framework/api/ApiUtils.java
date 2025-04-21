@@ -3,6 +3,7 @@ package com.automation.framework.api;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
+import java.io.InputStream;
 import java.util.Map;
 
 import com.automation.framework.config.ConfigReader;
@@ -49,6 +50,18 @@ public class ApiUtils {
                 .get(customEndPoint)
                 .then()
                 .extract().response();
+        return response;
+    }
+
+    //for sempsarc 2💥💥💥💥💥
+    public static InputStream getReqForStreams(String customBaseUri, String customEndPoint, Map<String, String> paramsMap) {
+        InputStream response = given()
+                .baseUri(customBaseUri)
+                .queryParams(paramsMap)
+                .when()
+                .get(customEndPoint)
+                .then()
+                .extract().response().asInputStream();
         return response;
     }
 

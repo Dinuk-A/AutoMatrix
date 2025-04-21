@@ -2,14 +2,14 @@ package com.automation.framework.api;
 
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.ApiUtils;
+//import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
 import com.automation.framework.utils.CommonMethods;
 import com.automation.framework.utils.HttpStatusCode;
 import io.qameta.allure.*;
 
-import org.testng.Assert;
+//import org.testng.Assert;
 
 import io.restassured.response.Response;
 
@@ -22,10 +22,10 @@ public class GetUsersTest {
     private static final String ENDPOINT_URL = ConfigReader.getProperty("endpoint.url");    
 
     // for allur
-    //@Epic("testing allur, user mgt")
-    //@Feature("User Retrieval")
-    //@Story("Fetch all users from the system")
-    //@Severity(SeverityLevel.NORMAL)
+    @Epic("testing allur, user mgt")
+    @Feature("User Retrieval")
+    @Story("Fetch all users from the system")
+    @Severity(SeverityLevel.NORMAL)
 
     @Test
     //(description = "Verify that all users can be fetched successfully and response is valid")

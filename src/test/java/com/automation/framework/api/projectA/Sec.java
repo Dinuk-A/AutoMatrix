@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.testng.annotations.Test;
 
 import com.automation.framework.api.ApiUtils;
@@ -16,13 +17,12 @@ import com.automation.framework.utils.HttpStatusCode;
 import com.automation.framework.utils.JsonReaderNew;
 
 import io.restassured.response.Response;
+import static io.restassured.RestAssured.given;
 
-//Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=FIrstTest
-//mvn test -Dtest=FIrstTest
-public class FIrstTest {
-
+//Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=Sec
+public class Sec {
     // to save and use the access token later
-       private static String accessToken;
+    // private static String accessToken;
 
     private static final String SEMP_BASE_URI = ConfigReader.getProperty("sempsarc.base.url");
 
@@ -32,70 +32,62 @@ public class FIrstTest {
 
     private static final String SEMP_GET_END_URL = ConfigReader.getProperty("sempsarc.get.endpoint");
 
-    /// mvn clean
-
-    // mvn test -Dtest=FIrstTest#retrieveTokenByPost
     @Test
-    public void retrieveTokenByPost() {
-
+    public void retrieveTokenAndReadStream() {
+        // 1. Retrieve token
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("clientId", "MecNecILet@Met001");
         placeholders.put("password", "d2nEH8G4dj");
         placeholders.put("userId", "363538");
 
         String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/SempsarcBody.json", placeholders);
-
         Response response = ApiUtils.postReqWithRawJsonNew(SEMP_BASE_URI, ENDPOINT_URL, reqBody);
+        String accessToken = response.jsonPath().getString("data.accessToken");
 
-        // verify the body
-        CommonMethods.printResponseBody(response);
-
-        // Test status code
-        AssertionUtils.assertStatusCode(response, HttpStatusCode.OK.getCode());
-        // POST wala 201 (created) enna one, but meke enne 200(OK). ay ?💥💥💥
-
-        // retrieve from here
-        accessToken = response.jsonPath().getString("data.accessToken");
         System.out.println("Access Token: " + accessToken);
 
-        System.out.println("retrieveTokenByPost success");
-
-    }
-
-    // GET for sempsarc
-    @Test
-    public void retrieveDataWithToken() {
-        // Ensure accessToken is not null
-        if (accessToken == null || accessToken.isEmpty()) {
-            System.out.println("Access token is missing. Run retrieveTokenByPost() first.");
-            return;
-        }
-
-        // Set query param with the token
+        // 2. Start stream with token
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("token", accessToken);
 
-        // Get the streaming response
-        InputStream responseStream = ApiUtils.getReqForStreams(SEMP_GET_BASE_URL, SEMP_GET_END_URL, queryParams);
+        InputStream stream = ApiUtils.getReqForStreams(SEMP_GET_BASE_URL, SEMP_GET_END_URL, queryParams);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 
-        // Read from stream for a few seconds
-        long startTime = System.currentTimeMillis();
-        long maxDuration = 5000; // 5 seconds
+        System.out.println("Reading stream for 5 seconds...");
 
-        System.out.println("Reading stream for 5 seconds... ");
+        long start = System.currentTimeMillis();
+        long duration = 5000; // 5 seconds
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream))) {
+        try {
             String line;
-            while ((line = reader.readLine()) != null && (System.currentTimeMillis() - startTime < maxDuration)) {
+            while ((System.currentTimeMillis() - start) < duration && (line = reader.readLine()) != null) {
                 System.out.println("Stream: " + line);
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close(); // 🛑 Force close stream
+                stream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        System.out.println("Stream closed ");
+        System.out.println("Stream closed ✅");
+
+        // 3. Make a quick GET to get status
+        //int statusCode = given()
+        //        .baseUri(SEMP_GET_BASE_URL)
+        //        .queryParams(queryParams)
+        //        .when()
+        //        .get(SEMP_GET_END_URL)
+        //        .getStatusCode();
+
+        //System.out.println("Status Code: " + statusCode);
     }
 
 }
 
-// Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=FIrstTest
+
+//Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=Sec

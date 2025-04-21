@@ -65,6 +65,16 @@ public class ApiUtils {
         return response;
     }
 
+    //333333
+    public static Response getStreamingResponse(String baseUri, String endPoint, Map<String, String> params) {
+        return given()
+                .baseUri(baseUri)
+                .queryParams(params)
+                .when()
+                .get(endPoint);
+    }
+    
+
     // wrapper for GET with SINGLE PATH PARAM
     // https://reqres.in/api/users/4
     public static Response getReqWithSinglePathParam(String customEndPoint, String paramKey, String paramValue) {

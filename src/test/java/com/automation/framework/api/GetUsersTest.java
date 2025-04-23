@@ -33,7 +33,7 @@ public class GetUsersTest {
 
         // get the response
         Response response = ApiUtils.getRequest(ENDPOINT_URL);
-        System.out.println("👉 Loaded endpoint URL: " + ENDPOINT_URL);
+        System.out.println(" Loaded endpoint URL: " + ENDPOINT_URL);
 
         // print the response body 💥
         CommonMethods.printResponseBody(response);

@@ -39,8 +39,15 @@
     <dependency>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-testng</artifactId>
-        <version>2.24.0</version> <!-- use the latest -->
+        <version>2.24.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-cosmos</artifactId>
+      <version>4.67.0</version> 
+    </dependency>
+
 
   </dependencies>
 

@@ -13,6 +13,7 @@ import io.restassured.response.Response;
 //to clear prrevious allur jsons >> Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=GetUsersTest
 
 //mvn test -Dtest=GetUsersTest  ✅✅✅
+//mvn test -Dtest=GetUsersTest -DskipTests=true
 public class GetUsersTest {
 
     // capture the endpoint's URL

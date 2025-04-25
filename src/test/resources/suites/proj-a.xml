@@ -13,3 +13,6 @@
 <!-- mvn clean test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
 <!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
 <!-- use double quotes -->
+
+<!-- new -->
+<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" -DskipTests=false -->

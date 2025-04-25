@@ -96,6 +96,8 @@
               <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
             </suiteXmlFiles>
 
+            <!--<skipTests>${skipTests}</skipTests>-->
+
             <useFile>false</useFile> 
             <printSummary>true</printSummary>
 

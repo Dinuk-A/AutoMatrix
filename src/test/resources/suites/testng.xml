@@ -6,3 +6,5 @@
         </classes>
     </test>
 </suite>
+
+<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/testng.xml" -->

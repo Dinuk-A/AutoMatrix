@@ -92,12 +92,12 @@
 
           <configuration>
 
-            <useFile>false</useFile> 
-            <printSummary>true</printSummary> 
-
             <suiteXmlFiles>
-              <suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
+              <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
             </suiteXmlFiles>
+
+            <useFile>false</useFile> 
+            <printSummary>true</printSummary>
 
           </configuration>
 

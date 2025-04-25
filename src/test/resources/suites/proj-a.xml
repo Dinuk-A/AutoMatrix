@@ -1,5 +1,3 @@
-<!-- mvn clean test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
-<!-- use double quotes -->
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="ProjectA Suite">
 
@@ -11,3 +9,7 @@
 
     <!-- You can add more tests here if needed -->
 </suite>
+
+<!-- mvn clean test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
+<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
+<!-- use double quotes -->

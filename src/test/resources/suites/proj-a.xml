@@ -1,6 +1,5 @@
 <!-- mvn clean test "-DsuiteXmlFile=src/test/resources/suites/proj-a.xml" ✅✅✅-->
 <!-- use double quotes -->
-http://localhost:9090/
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="ProjectA Suite">
 

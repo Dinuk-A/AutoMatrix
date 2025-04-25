@@ -1,7 +1,8 @@
-package com.automation.framework.api;
+package com.automation.framework.SampleTests.api;
 
 import org.testng.annotations.Test;
 
+import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
 import com.automation.framework.utils.HttpStatusCode;
@@ -11,6 +12,8 @@ import io.restassured.response.Response;
 
 public class UpdateUserTest {
 
+    private static final String BASE_URL = ConfigReader.getProperty("base.url");
+
     private static final String ENDPOINT_URL = ConfigReader.getProperty("put.endpoint.url");
 
     //mvn test -Dtest=UpdateUserTest#basicPutReq ✅
@@ -19,7 +22,7 @@ public class UpdateUserTest {
 
         String requestBody = JsonReader.readJsonFile("src/test/resources/data/UserData.json");
 
-        Response response = ApiUtils.putRequestWithRawJson(ENDPOINT_URL, requestBody);
+        Response response = ApiUtils.putRequestWithRawJson(BASE_URL,ENDPOINT_URL, requestBody);
 
         // check body
         System.out.println(response.getBody().asPrettyString());

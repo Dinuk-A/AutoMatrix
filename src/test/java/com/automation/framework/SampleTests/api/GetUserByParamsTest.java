@@ -1,10 +1,11 @@
-package com.automation.framework.api;
+package com.automation.framework.SampleTests.api;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import com.automation.framework.api.ApiUtils;
 import com.automation.framework.config.ConfigReader;
 import com.automation.framework.utils.AssertionUtils;
 import com.automation.framework.utils.HttpStatusCode;
@@ -13,6 +14,10 @@ import io.restassured.response.Response;
 
 //mvn test -Dtest=GetUserByParamsTest ✅
 public class GetUserByParamsTest {
+
+    private static final String BASE_URL = ConfigReader.getProperty("base.url");
+
+    private static final String BASE_URL_JSON_PLACEHOLDER = ConfigReader.getProperty("qp.url");
 
     // capture the endpoint's URL
     private static final String QP_ENDPOINT_URL = ConfigReader.getProperty("qp.endpoint.url");
@@ -29,7 +34,7 @@ public class GetUserByParamsTest {
         queryParams.put("userId", "1");
 
         // call wrapper class
-        Response response = ApiUtils.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
+        Response response = ApiUtils.getReqWithQueryParams(BASE_URL_JSON_PLACEHOLDER,QP_ENDPOINT_URL, queryParams);
 
         // print the body
         System.out.println(response.getBody().asString());
@@ -53,7 +58,7 @@ public class GetUserByParamsTest {
         queryParams.put("id", "4");
 
         // call wrapper class
-        Response response = ApiUtils.getReqWithQueryParams(QP_ENDPOINT_URL, queryParams);
+        Response response = ApiUtils.getReqWithQueryParams(BASE_URL_JSON_PLACEHOLDER,QP_ENDPOINT_URL, queryParams);
 
         // print the body
         System.out.println(response.getBody().asString());
@@ -71,7 +76,7 @@ public class GetUserByParamsTest {
     @Test
     public void getUserBySinglePathParam() {
         // call wrapper class
-        Response response = ApiUtils.getReqWithSinglePathParam(PP_ENDPOINT_URL, "id", "4");
+        Response response = ApiUtils.getReqWithSinglePathParam(BASE_URL,PP_ENDPOINT_URL, "id", "4");
 
         // print the body
         System.out.println(response.getBody().asString());

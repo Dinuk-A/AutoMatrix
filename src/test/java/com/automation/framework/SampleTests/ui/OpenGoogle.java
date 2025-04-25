@@ -1,4 +1,4 @@
-package com.automation.framework.frontend;
+package com.automation.framework.SampleTests.ui;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

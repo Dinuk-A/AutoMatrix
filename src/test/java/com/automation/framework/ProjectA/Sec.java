@@ -1,4 +1,4 @@
-package com.automation.framework.api.projectA;
+package com.automation.framework.ProjectA;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class Sec {
         placeholders.put("userId", "363538");
 
         String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/SempsarcBody.json", placeholders);
-        Response response = ApiUtils.postReqWithRawJsonNew(SEMP_BASE_URI, ENDPOINT_URL, reqBody);
+        Response response = ApiUtils.postReqWithRawJson(SEMP_BASE_URI, ENDPOINT_URL, reqBody);
         String accessToken = response.jsonPath().getString("data.accessToken");
 
         System.out.println("Access Token: " + accessToken);

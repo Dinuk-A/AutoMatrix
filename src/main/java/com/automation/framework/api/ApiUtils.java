@@ -2,177 +2,146 @@ package com.automation.framework.api;
 
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
-
 import java.io.InputStream;
 import java.util.Map;
-
-import com.automation.framework.config.ConfigReader;
-
 import io.restassured.http.ContentType;
 
 public class ApiUtils {
 
-    // this is for basic GETs
-    private static final String BASE_URL = ConfigReader.getProperty("base.url");
-
-    // this is for query param related GETs
-    private static final String BASE_URL_JSON_PLACEHOLDER = ConfigReader.getProperty("qp.url");
-
-    // wrapper for BASIC GET reqs ✅
-    public static Response getRequest(String customEndPoint) {
+    // Basic GET request
+    public static Response getRequest(String baseUrl, String endPoint) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response();
     }
 
-    // wrapper for GET with QUERY PARAMS ( single & multi ) ✅
-    // ex: https://api.example.com/users?status=active&role=admin
-    public static Response getReqWithQueryParams(String customEndPoint, Map<String, String> paramsMap) {
-        Response response = given()
-                .baseUri(BASE_URL_JSON_PLACEHOLDER)
+    // GET with query parameters
+    public static Response getReqWithQueryParams(String baseUrl, String endPoint, Map<String, String> paramsMap) {
+        return given()
+                .baseUri(baseUrl)
                 .queryParams(paramsMap)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response();
-        return response;
     }
 
-    //for sempsarc 💥💥💥💥💥
-    public static Response getReqWithQueryParamsForSempSarc(String customBaseUri,String customEndPoint, Map<String, String> paramsMap) {
-        Response response = given()
-                .baseUri(customBaseUri)
+    // GET with query parameters (Sempsarc-style)
+    public static Response getReqWithQueryParamsForSempSarc(String baseUrl, String endPoint, Map<String, String> paramsMap) {
+        return given()
+                .baseUri(baseUrl)
                 .queryParams(paramsMap)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response();
-        return response;
     }
 
-    //for sempsarc 2💥💥💥💥💥
-    public static InputStream getReqForStreams(String customBaseUri, String customEndPoint, Map<String, String> paramsMap) {
-        InputStream response = given()
-                .baseUri(customBaseUri)
+    // GET request returning InputStream (Sempsarc-style)
+    public static InputStream getReqForStreams(String baseUrl, String endPoint, Map<String, String> paramsMap) {
+        return given()
+                .baseUri(baseUrl)
                 .queryParams(paramsMap)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response().asInputStream();
-        return response;
     }
 
-    //333333
-    public static Response getStreamingResponse(String baseUri, String endPoint, Map<String, String> params) {
+    // GET request for streaming response (for SSE or chunked)
+    public static Response getStreamingResponse(String baseUrl, String endPoint, Map<String, String> paramsMap) {
         return given()
-                .baseUri(baseUri)
-                .queryParams(params)
+                .baseUri(baseUrl)
+                .queryParams(paramsMap)
                 .when()
                 .get(endPoint);
     }
-    
 
-    // wrapper for GET with SINGLE PATH PARAM
-    // https://reqres.in/api/users/4
-    public static Response getReqWithSinglePathParam(String customEndPoint, String paramKey, String paramValue) {
+    // GET with single path param
+    public static Response getReqWithSinglePathParam(String baseUrl, String endPoint, String paramKey, String paramValue) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .pathParam(paramKey, paramValue)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response();
     }
 
-    // wrapper for GET with MULTI PATH PARAM
-    // ??? 💥💥💥
-    public static Response getReqWithMultiplePathParams(String customEndPoint, Map<String, String> pathParams) {
+    // GET with multiple path params
+    public static Response getReqWithMultiplePathParams(String baseUrl, String endPoint, Map<String, String> pathParams) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .pathParams(pathParams)
                 .when()
-                .get(customEndPoint)
+                .get(endPoint)
                 .then()
                 .extract().response();
     }
 
-    // wrapper for no-payload, empty postreq??? 💥💥💥
+    //############################## POST ##############################
 
-    // ##########################################################################
-
-    // POSTS ✅✅✅
-    // wrapper for basic POST with a json payload read from a file ✅
-    public static Response postReqWithRawJson(String customEndPoint, String requestBodyJson) {
+    // POST with raw JSON (string body)
+    public static Response postReqWithRawJson(String baseUrl, String endPoint, String requestBodyJson) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .body(requestBodyJson)
                 .when()
-                .post(customEndPoint)
+                .post(endPoint)
                 .then()
                 .extract().response();
     }
 
-    //to customize the base uri too 💥💥💥💥💥
-    //NO BASE URL
-    public static Response postReqWithRawJsonNew(String customBaseUri,String customEndPoint, String requestBodyJson) {
+    // POST with headers and body object
+    public static Response postReqWithHeadersAndBody(String baseUrl, String endPoint, Map<String, String> headers, Object requestBody) {
         return given()
-                .baseUri(customBaseUri)
-                .contentType(ContentType.JSON)
-                .body(requestBodyJson)
-                .when()
-                .post(customEndPoint)
-                .then()
-                .extract().response();
-    }
-
-    // wrapper for POST with a header + payload
-    public static Response postReqWithHeadersAndBody(String customEndPoint, Map<String, String> headers,
-            Object requestBody) {
-        return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .headers(headers)
                 .contentType(ContentType.JSON)
                 .body(requestBody)
                 .when()
-                .post(customEndPoint)
+                .post(endPoint)
                 .then()
                 .extract().response();
     }
 
-    // ##########################################################################
+    //############################## PuT ##############################
 
-    // PUTs
-    public static Response putRequestWithRawJson(String customEndPoint, String requestBodyJson) {
+    // PUT with raw JSON
+    public static Response putRequestWithRawJson(String baseUrl, String endPoint, String requestBodyJson) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .contentType(ContentType.JSON)
                 .body(requestBodyJson)
                 .when()
-                .put(customEndPoint)
+                .put(endPoint)
                 .then()
                 .extract().response();
     }
 
-       // ##########################################################################
-
-       //DELETEs
-       public static Response deleteRequest(String customEndPoint) {
+    // DELETE request
+    public static Response deleteRequest(String baseUrl, String endPoint) {
         return given()
-                .baseUri(BASE_URL)
+                .baseUri(baseUrl)
                 .when()
-                .delete(customEndPoint)
+                .delete(endPoint)
                 .then()
                 .extract().response();
     }
-    
 
-
+    // PATCH with raw JSON
+    public static Response patchRequestWithRawJson(String baseUrl, String endPoint, String requestBodyJson) {
+        return given()
+                .baseUri(baseUrl)
+                .contentType(ContentType.JSON)
+                .body(requestBodyJson)
+                .when()
+                .patch(endPoint)
+                .then()
+                .extract().response();
+    }
 }
-
-//  delete methods needs to be here too
-
-// delete, patch

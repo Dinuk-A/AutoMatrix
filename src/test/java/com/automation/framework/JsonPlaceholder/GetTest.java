@@ -16,6 +16,7 @@ public class GetTest {
 
     private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.get.endpoint.url");
 
+    //✅
     @Test
     public void basicGetTest() {
         Response response = ApiUtils.getRequest(BASE_URL, ENDPOINT_URL);

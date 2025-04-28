@@ -12,6 +12,7 @@ import com.automation.framework.utils.api.JsonReader;
 import com.automation.framework.utils.api.JsonReaderNew;
 import com.automation.framework.utils.common.ConfigReader;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 //mvn test -Dtest=CreateUserTest ✅
@@ -62,12 +63,21 @@ public class CreateUserTest {
 
         String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/UserDataNew.json", placeholders);
 
-        Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL, reqBody);
+        // Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL,
+        // reqBody);
+        Response response = RestAssured
+                .given()
+                .baseUri(BASE_URL)
+                .basePath(ENDPOINT_URL)
+                .header("Content-Type", "application/json")
+                .header("x-api-key", "reqres-free-v1") // Temporarily add the header
+                .body(reqBody)
+                .post();
 
         System.out.println(response.getBody().asPrettyString());
 
         // Test status code
-        //AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
+        // AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
 
         System.out.println("dynamicPostReqTest success");
     }

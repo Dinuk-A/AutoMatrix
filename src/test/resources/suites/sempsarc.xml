@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ProjectA Test Suite">
+    <test name="First Test Execution">
+        <classes>
+            <class name="com.automation.framework.ProjectA.FIrstTest"/>
+        </classes>
+    </test>
+</suite>

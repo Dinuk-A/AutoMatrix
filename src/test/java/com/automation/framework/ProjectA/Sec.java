@@ -40,7 +40,7 @@ public class Sec {
         placeholders.put("password", "d2nEH8G4dj");
         placeholders.put("userId", "363538");
 
-        String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/SempsarcBody.json", placeholders);
+        String reqBody = JsonReaderNew.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json", placeholders);
         Response response = ApiUtils.postReqWithRawJson(SEMP_BASE_URI, ENDPOINT_URL, reqBody);
         String accessToken = response.jsonPath().getString("data.accessToken");
 

@@ -1,0 +1,5 @@
+{
+    "title": "Testing static JSON post",
+    "body": "This is a static JSON payload used for API POST request testing.",
+    "userId": 1
+}

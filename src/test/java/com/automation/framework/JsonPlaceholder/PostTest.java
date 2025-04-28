@@ -9,6 +9,7 @@ import com.automation.framework.utils.api.ApiUtils;
 import com.automation.framework.utils.api.AssertionUtils;
 import com.automation.framework.utils.api.CommonMethods;
 import com.automation.framework.utils.api.HttpStatusCode;
+import com.automation.framework.utils.api.JsonReader;
 import com.automation.framework.utils.api.JsonUtils;
 import com.automation.framework.utils.common.ConfigReader;
 
@@ -19,6 +20,23 @@ public class PostTest {
     private static final String BASE_URL = ConfigReader.getProperty("jp.base.url");
 
     private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.get.endpoint.url");
+
+    // ✅
+    // https://jsonplaceholder.typicode.com/posts
+    @Test
+    public void postWithStaticJson() {
+
+        String requestBody = JsonReader.readStaticJsonFile("src/test/resources/data/PredefinedEx.json");
+
+        Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL, requestBody);
+
+        CommonMethods.printResponseBody(response);
+
+        AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
+
+        System.out.println("postWithStaticJson success");
+
+    }
 
     // ✅
     // https://jsonplaceholder.typicode.com/posts
@@ -42,4 +60,3 @@ public class PostTest {
 
     }
 }
-

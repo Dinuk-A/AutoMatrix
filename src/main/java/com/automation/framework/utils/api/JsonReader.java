@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class JsonReader {
     
     // Reads a JSON file and returns it as a String
-    public static String readJsonFile(String filePath) {
+    public static String readStaticJsonFile(String filePath) {
         try {
             return new String(Files.readAllBytes(Paths.get(filePath)));
         } catch (IOException e) {

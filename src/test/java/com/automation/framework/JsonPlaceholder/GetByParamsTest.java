@@ -20,6 +20,7 @@ public class GetByParamsTest {
     private static final String QUERY_PARAM_URL = ConfigReader.getProperty("jp.queryparam.url");
 
     // ✅
+    //https://jsonplaceholder.typicode.com/posts/5
     @Test
     public void getBySinglePathParam() {
 
@@ -36,6 +37,7 @@ public class GetByParamsTest {
     }
 
     // ✅
+    //https://jsonplaceholder.typicode.com/comments?postId=3
     @Test
     public void getBySingleQueryParam() {
 
@@ -52,6 +54,8 @@ public class GetByParamsTest {
 
     }
 
+    // ✅
+    //https://jsonplaceholder.typicode.com/comments?postId=5&id=23
     @Test
     public void getByMultiQueryParams() {
 

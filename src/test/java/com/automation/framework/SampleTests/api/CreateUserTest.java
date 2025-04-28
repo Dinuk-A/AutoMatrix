@@ -63,16 +63,17 @@ public class CreateUserTest {
 
         String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/UserDataNew.json", placeholders);
 
-        // Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL,
-        // reqBody);
-        Response response = RestAssured
-                .given()
-                .baseUri(BASE_URL)
-                .basePath(ENDPOINT_URL)
-                .header("Content-Type", "application/json")
-                .header("x-api-key", "reqres-free-v1") // Temporarily add the header
-                .body(reqBody)
-                .post();
+         Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL,
+         reqBody);
+
+        //Response responseTwo = RestAssured
+        //        .given()
+        //        .baseUri(BASE_URL)
+        //        .basePath(ENDPOINT_URL)
+        //        .header("Content-Type", "application/json")
+        //        .header("x-api-key", "reqres-free-v1") 
+        //        .body(reqBody)
+        //        .post();
 
         System.out.println(response.getBody().asPrettyString());
 

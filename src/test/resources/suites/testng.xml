@@ -2,7 +2,7 @@
 <suite name="API Test Suite">
     <test name="CreateUser API Tests">
         <classes>            
-          <class name="com.automation.framework.JsonPlaceholder.GetByParamsTest"/>
+          <class name="com.automation.framework.JsonPlaceholder.PutTest"/>
         </classes>
     </test>
 </suite>

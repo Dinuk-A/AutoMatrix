@@ -17,6 +17,7 @@ public class GetTest {
     private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.get.endpoint.url");
 
     //✅
+    //https://jsonplaceholder.typicode.com/posts
     @Test
     public void basicGetTest() {
         Response response = ApiUtils.getRequest(BASE_URL, ENDPOINT_URL);

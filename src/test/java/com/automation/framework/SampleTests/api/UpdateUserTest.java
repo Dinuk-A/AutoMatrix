@@ -2,11 +2,11 @@ package com.automation.framework.SampleTests.api;
 
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.ApiUtils;
-import com.automation.framework.config.ConfigReader;
-import com.automation.framework.utils.AssertionUtils;
-import com.automation.framework.utils.HttpStatusCode;
-import com.automation.framework.utils.JsonReader;
+import com.automation.framework.utils.api.ApiUtils;
+import com.automation.framework.utils.api.AssertionUtils;
+import com.automation.framework.utils.api.HttpStatusCode;
+import com.automation.framework.utils.api.JsonReader;
+import com.automation.framework.utils.common.ConfigReader;
 
 import io.restassured.response.Response;
 

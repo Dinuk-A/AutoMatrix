@@ -1,4 +1,4 @@
-package com.automation.framework.utils;
+package com.automation.framework.utils.api;
 
 public enum HttpStatusCode {
 

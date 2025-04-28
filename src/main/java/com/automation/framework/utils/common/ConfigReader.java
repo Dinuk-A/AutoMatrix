@@ -1,4 +1,4 @@
-package com.automation.framework.config;
+package com.automation.framework.utils.common;
 
 import java.io.IOException;
 import java.io.InputStream;

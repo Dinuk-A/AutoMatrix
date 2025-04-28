@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.ApiUtils;
-import com.automation.framework.config.ConfigReader;
-import com.automation.framework.utils.AssertionUtils;
-import com.automation.framework.utils.CommonMethods;
-import com.automation.framework.utils.HttpStatusCode;
-import com.automation.framework.utils.JsonReaderNew;
+import com.automation.framework.utils.api.ApiUtils;
+import com.automation.framework.utils.api.AssertionUtils;
+import com.automation.framework.utils.api.CommonMethods;
+import com.automation.framework.utils.api.HttpStatusCode;
+import com.automation.framework.utils.api.JsonReaderNew;
+import com.automation.framework.utils.common.ConfigReader;
 
 import io.restassured.response.Response;
 

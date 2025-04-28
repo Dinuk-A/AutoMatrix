@@ -1,4 +1,4 @@
-package com.automation.framework.utils;
+package com.automation.framework.utils.api;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

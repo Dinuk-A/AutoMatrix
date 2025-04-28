@@ -16,3 +16,6 @@
         </classes>
     </test>
 </suite>
+
+<!-- jenkins -->
+<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/mixed.xml" -->

@@ -1,14 +1,16 @@
 package com.automation.framework.SampleTests.api;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.automation.framework.api.ApiUtils;
-import com.automation.framework.config.ConfigReader;
-import com.automation.framework.utils.AssertionUtils;
-import com.automation.framework.utils.HttpStatusCode;
-import com.automation.framework.utils.JsonReader;
-import com.automation.framework.utils.JsonReaderNew;
+import com.automation.framework.utils.api.ApiUtils;
+import com.automation.framework.utils.api.AssertionUtils;
+import com.automation.framework.utils.api.HttpStatusCode;
+import com.automation.framework.utils.api.JsonReader;
+import com.automation.framework.utils.api.JsonReaderNew;
+import com.automation.framework.utils.common.ConfigReader;
 
 import io.restassured.response.Response;
 
@@ -24,13 +26,13 @@ public class CreateUserTest {
     public void basicPostReq() {
         String requestBody = JsonReader.readJsonFile("src/test/resources/data/UserData.json");
 
-        Response response = ApiUtils.postReqWithRawJson(BASE_URL,ENDPOINT_URL, requestBody);
+        Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL, requestBody);
 
         // check body
         System.out.println(response.getBody().asPrettyString());
 
         // test status code
-        //int statusCode = response.getStatusCode();
+        // int statusCode = response.getStatusCode();
         AssertionUtils.assertStatusCode(response, HttpStatusCode.CREATED.getCode());
 
         // is response time below X seconds ?
@@ -38,7 +40,7 @@ public class CreateUserTest {
         AssertionUtils.assertResponseTime(responseTime, 5000);
 
         // content-Type Check using AssertionUtils
-        //String contentType = response.getHeader("Content-Type");
+        // String contentType = response.getHeader("Content-Type");
         AssertionUtils.assertContentType(response, "application/json");
 
         // NO ASSERTUTIL METHOD for this 💥
@@ -50,14 +52,17 @@ public class CreateUserTest {
 
     }
 
-    //mvn test -Dtest=CreateUserTest#dynamicPostReqTest
+    // mvn test -Dtest=CreateUserTest#dynamicPostReqTest
     @Test
     public void dynamicPostReqTest() {
-        
-        String reqBody = JsonReaderNew.readJsonFile("src/test/resources/data/UserDataNew.json", "John Doe",
-                "Software Engineer");
 
-        Response response = ApiUtils.postReqWithRawJson(BASE_URL,ENDPOINT_URL, reqBody);
+        Map<String, String> placeholders = Map.of(
+                "name", "John Doe",
+                "job", "Software Engineer");
+
+        String reqBody = JsonReaderNew.readDynamicJsonFiles("src/test/resources/data/UserDataNew.json", placeholders);
+
+        Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL, reqBody);
 
         System.out.println(response.getBody().asPrettyString());
 

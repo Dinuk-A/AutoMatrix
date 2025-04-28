@@ -1,4 +1,4 @@
-package com.automation.framework.api;
+package com.automation.framework.utils.api;
 
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;

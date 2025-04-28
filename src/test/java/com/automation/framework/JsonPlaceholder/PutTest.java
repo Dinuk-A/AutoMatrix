@@ -18,7 +18,7 @@ public class PutTest {
 
     private static final String BASE_URL = ConfigReader.getProperty("jp.base.url");
 
-    private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.put.url");
+    private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.put.delete.url");
 
     //✅
     //https://jsonplaceholder.typicode.com/posts/1

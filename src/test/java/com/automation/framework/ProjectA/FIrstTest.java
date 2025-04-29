@@ -63,14 +63,9 @@ public class FIrstTest {
     }
 
     // GET for sempsarc
-    @Test
+    @Test(dependsOnMethods = {"retrieveTokenByPost"})
     public void retrieveDataWithToken() {
-        // Ensure accessToken is not null
-        if (accessToken == null || accessToken.isEmpty()) {
-            System.out.println("Access token is missing. Run retrieveTokenByPost() first.");
-            return;
-        }
-
+    
         // Set query param with the token
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("token", accessToken);
@@ -94,7 +89,11 @@ public class FIrstTest {
         }
 
         System.out.println("Stream closed ");
+
+        System.out.println("retrieveDataWithToken success");
     }
+
+   
 
 }
 

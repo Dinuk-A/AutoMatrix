@@ -2,7 +2,13 @@
 <suite name="ProjectA Test Suite">
     <test name="First Test Execution">
         <classes>
-            <class name="com.automation.framework.ProjectA.FIrstTest"/>
+            <class name="com.automation.framework.ProjectA.NewSemp"/>
         </classes>
     </test>
 </suite>
+
+<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/sempsarc.xml"
+ -->
+
+ <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/sempsarc.xml"
+ -->

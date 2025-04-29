@@ -14,7 +14,10 @@ import com.automation.framework.utils.api.JsonReaderNew;
 import com.automation.framework.utils.common.ConfigReader;
 
 import io.restassured.response.Response;
+import io.qameta.allure.*;
 
+@Epic("SEMP Streaming API")
+@Feature("Combined Token Retrieval and Stream Reading")
 public class NewSemp {
 
     private static final String SEMP_BASE_URL = ConfigReader.getProperty("sempsarc.base.url");
@@ -22,7 +25,10 @@ public class NewSemp {
     private static final String SEMP_GET_BASE_URL = ConfigReader.getProperty("sempsarc.get.base.url");
     private static final String SEMP_GET_END_URL = ConfigReader.getProperty("sempsarc.get.endpoint");
 
-    @Test
+    @Test(description = "Retrieve access token via POST and read streaming data using the token")
+    @Story("Stream API with Token Auth")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("This test retrieves an access token from SEMP and uses it to initiate a streaming API call, reading for 15 seconds.")
     public void retrieveTokenAndReadStream() {
 
         Map<String, String> placeholders = new HashMap<>();
@@ -30,9 +36,10 @@ public class NewSemp {
         placeholders.put("password", "d2nEH8G4dj");
         placeholders.put("userId", "363538");
 
-        String reqBody = JsonReaderNew.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json", placeholders);
+        String reqBody = JsonReaderNew.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json",
+                placeholders);
 
-        Response tokenResponse =ApiUtils.postReqWithRawJson(SEMP_BASE_URL, ENDPOINT_URL, reqBody);
+        Response tokenResponse = ApiUtils.postReqWithRawJson(SEMP_BASE_URL, ENDPOINT_URL, reqBody);
 
         String accessToken = tokenResponse.jsonPath().getString("data.accessToken");
 
@@ -43,13 +50,13 @@ public class NewSemp {
 
         Response streamResponse = ApiUtils.getStreamingResponse(SEMP_GET_BASE_URL, SEMP_GET_END_URL, queryParams);
 
-         InputStream stream = streamResponse.asInputStream();
+        InputStream stream = streamResponse.asInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 
         System.out.println("Reading stream for 5 seconds...");
 
         long start = System.currentTimeMillis();
-        long duration = 15000; // 15 seconds
+        long duration = 15000;
 
         Thread streamReaderThread = new Thread(() -> {
             try {
@@ -72,7 +79,7 @@ public class NewSemp {
         Thread testResultThread = new Thread(() -> {
             try {
                 Thread.sleep(duration);
-                System.out.println("Stream closed ✅");
+                System.out.println("Stream closed ");
                 // Add your code to display Maven test results here
                 // For example:
                 // Remove-Item -Recurse -Force .\allure-results; mvn test -Dtest=Third
@@ -83,7 +90,6 @@ public class NewSemp {
 
         streamReaderThread.start();
         testResultThread.start();
-
 
     }
 

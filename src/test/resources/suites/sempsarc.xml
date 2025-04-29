@@ -2,10 +2,12 @@
 <suite name="Sempsarc Test Suite">
     <test name="Sempsarc new Execution">
         <classes>
-            <class name="com.automation.framework.ProjectA.NewSemp"/>
+            <class name="com.automation.framework.ProjectA.SempTwo"/>
         </classes>
     </test>
 </suite>
+
+
 
 <!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/sempsarc.xml"
  -->
@@ -14,3 +16,6 @@
  -->
 
  <!-- Remove-Item -Recurse -Force .\allure-results; -->
+
+
+ <!-- SempTwo working ✅✅✅✅✅ -->

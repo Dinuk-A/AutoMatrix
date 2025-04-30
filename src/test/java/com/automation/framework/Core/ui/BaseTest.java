@@ -67,7 +67,7 @@ public class BaseTest {
     private WebDriver initializeEdgeDriver(boolean isHeadless) {
         EdgeOptions options = new EdgeOptions();
         if (isHeadless) {
-            options.addArguments("--headless");
+            options.addArguments("--headless=new");
             options.addArguments("--disable-gpu");
             options.addArguments("--no-sandbox");
         }

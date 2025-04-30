@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Test;
 
@@ -17,23 +19,19 @@ import io.restassured.response.Response;
 import io.qameta.allure.*;
 
 @Epic("SEMP Streaming API")
-@Feature("Token Retrieval and Stream Reading")
-public class New {
+@Feature("Combined Token Retrieval and Stream Reading")
+public class Sempsarc {
 
     private static final String SEMP_BASE_URL = ConfigReader.getProperty("sempsarc.base.url");
     private static final String ENDPOINT_URL = ConfigReader.getProperty("sempsarc.post.url");
     private static final String SEMP_GET_BASE_URL = ConfigReader.getProperty("sempsarc.get.base.url");
     private static final String SEMP_GET_END_URL = ConfigReader.getProperty("sempsarc.get.endpoint");
 
-    // Class variable to store the token between test methods
-    private static String accessToken;
-
-    @Test(description = "Retrieve access token via POST", priority = 1)
-    @Story("Token Retrieval")
+    @Test(description = "Retrieve access token via POST and read streaming data using the token")
+    @Story("Stream API with Token Auth")
     @Severity(SeverityLevel.CRITICAL)
-    @Description("This test retrieves an access token from SEMP")
-    public void retrieveToken() {
-        System.out.println("Loading config.properties...");
+    @Description("This test retrieves an access token from SEMP and uses it to initiate a streaming API call, reading for 15 seconds.")
+    public void retrieveTokenAndReadStream() throws InterruptedException {
 
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("clientId", "MecNecILet@Met001");
@@ -45,16 +43,10 @@ public class New {
 
         Response tokenResponse = ApiUtils.postReqWithRawJson(SEMP_BASE_URL, ENDPOINT_URL, reqBody);
 
-        accessToken = tokenResponse.jsonPath().getString("data.accessToken");
+        String accessToken = tokenResponse.jsonPath().getString("data.accessToken");
 
         System.out.println("Access Token: " + accessToken);
-    }
 
-    @Test(description = "Read streaming data using the token", priority = 2, dependsOnMethods = { "retrieveToken" })
-    @Story("Stream API with Token Auth")
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("This test uses the access token to initiate a streaming API call, reading for 15 seconds.")
-    public void readStream() throws InterruptedException {
         Map<String, String> queryParams = new HashMap<>();
         queryParams.put("token", accessToken);
 
@@ -65,30 +57,47 @@ public class New {
 
         System.out.println("Reading stream for 15 seconds...");
 
-        long startTime = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         long duration = 15000; // 15 seconds
 
-        try {
-            String line;
-            while ((System.currentTimeMillis() - startTime) < duration && (line = reader.readLine()) != null) {
-                System.out.println("Stream: " + line);
-            }
-            // Sleep for any remaining time to ensure we read for the full duration
-            long elapsed = System.currentTimeMillis() - startTime;
-            if (elapsed < duration) {
-                Thread.sleep(duration - elapsed);
-            }
-            System.out.println("Stream reading completed after 15 seconds");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        // Create a latch to ensure we wait for threads to complete
+        CountDownLatch latch = new CountDownLatch(2);
+
+        Thread streamReaderThread = new Thread(() -> {
             try {
-                reader.close();
-                stream.close();
+                String line;
+                while ((System.currentTimeMillis() - start) < duration && (line = reader.readLine()) != null) {
+                    System.out.println("Stream: " + line);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                latch.countDown();
             }
-        }
+        });
+
+        Thread testResultThread = new Thread(() -> {
+            try {
+                Thread.sleep(duration);
+                System.out.println("Stream reading completed after 15 seconds");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                latch.countDown();
+            }
+        });
+
+        streamReaderThread.start();
+        testResultThread.start();
+
+        // Wait for both threads to complete before ending the test
+        latch.await(duration + 2000, TimeUnit.MILLISECONDS); // Wait with a small buffer
 
     }
 }

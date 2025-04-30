@@ -2,7 +2,7 @@
 <suite name="Sempsarc Test Suite">
     <test name="Sempsarc new Execution">
         <classes>
-            <class name="com.automation.framework.ProjectA.SempTwo"/>
+            <class name="com.automation.framework.ProjectA.Sempsarc"/>
         </classes>
     </test>
 </suite>

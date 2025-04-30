@@ -22,20 +22,23 @@ public class BaseTest {
     protected WebDriverWait wait;
 
     @BeforeMethod
-    @Parameters({ "browser" })
-    public void setUp(String browser) {
+    @Parameters({ "browser", "headless" })
+    public void setUp(String browser,String headless) {
+
+        boolean isHeadless = headless.equalsIgnoreCase("true");
+
         switch (browser.toLowerCase()) {
             case "chrome":
-                driver = initializeChromeDriver();
+                driver = initializeChromeDriver(isHeadless);
                 break;
             case "firefox":
-                driver = initializeFirefoxDriver();
+                driver = initializeFirefoxDriver(isHeadless);
                 break;
             case "edge":
-                driver = initializeEdgeDriver();
+                driver = initializeEdgeDriver(isHeadless);
                 break;
             case "chromium":
-                driver = initializeChromiumDriver();
+                driver = initializeChromiumDriver(isHeadless);
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browser);
@@ -49,26 +52,39 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    private WebDriver initializeChromeDriver() {
+    private WebDriver initializeChromeDriver(boolean isHeadless) {
         ChromeOptions options = new ChromeOptions();
+        if (isHeadless) {
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+        }
         options.addArguments("--start-maximized");
         options.addArguments("--disable-notifications");
         return new ChromeDriver(options);
     }
 
-    private WebDriver initializeEdgeDriver() {
+    private WebDriver initializeEdgeDriver(boolean isHeadless) {
         EdgeOptions options = new EdgeOptions();
+        if (isHeadless) {
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--no-sandbox");
+        }
         options.addArguments("--start-maximized");
         return new EdgeDriver(options);
     }
 
-    private WebDriver initializeFirefoxDriver() {
+    private WebDriver initializeFirefoxDriver(boolean isHeadless) {
         FirefoxOptions options = new FirefoxOptions();
+        if (isHeadless) {
+            options.addArguments("-headless");
+        }
         options.addArguments("--start-maximized");
         return new FirefoxDriver(options);
     }
 
-    private WebDriver initializeChromiumDriver() {
+    private WebDriver initializeChromiumDriver(boolean isHeadless) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'initializeChromiumDriver'");
     }

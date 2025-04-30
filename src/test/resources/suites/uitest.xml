@@ -2,6 +2,7 @@
 <suite name="Automation Framework Suite">
     <test name="Chrome Tests">
         <parameter name="browser" value="chrome" />
+         <parameter name="headless" value="true" />
         <classes>
             <class name="com.automation.framework.SampleTests.ui.FirstUiTest" />
         </classes>
@@ -9,6 +10,7 @@
 
     <test name="Edge Tests">
         <parameter name="browser" value="edge" />
+         <parameter name="headless" value="true" />
         <classes>
             <class name="com.automation.framework.SampleTests.ui.FirstUiTest" />
         </classes>

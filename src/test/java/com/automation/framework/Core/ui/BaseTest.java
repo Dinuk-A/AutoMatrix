@@ -23,7 +23,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({ "browser", "headless" })
-    public void setUp(String browser,String headless) {
+    public void setUp(String browser, String headless) {
 
         boolean isHeadless = headless.equalsIgnoreCase("true");
 
@@ -37,9 +37,9 @@ public class BaseTest {
             case "edge":
                 driver = initializeEdgeDriver(isHeadless);
                 break;
-            //case "chromium":
-            //    driver = initializeChromiumDriver(isHeadless);
-            //    break;
+            // case "chromium":
+            // driver = initializeChromiumDriver(isHeadless);
+            // break;
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browser);
 
@@ -70,6 +70,8 @@ public class BaseTest {
             options.addArguments("--headless=new");
             options.addArguments("--disable-gpu");
             options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
         }
         options.addArguments("--start-maximized");
         return new EdgeDriver(options);
@@ -84,19 +86,18 @@ public class BaseTest {
         return new FirefoxDriver(options);
     }
 
+    // private WebDriver initializeChromiumDriver(boolean isHeadless) {
+    // ChromiumOptions options = new ChromiumOptions();
+    // if (isHeadless) {
+    // options.addArguments("--headless");
+    // options.addArguments("--disable-gpu");
+    // options.addArguments("--no-sandbox");
+    // }
+    // options.addArguments("--start-maximized");
+    // return new ChromiumDriver(options);
+    // }
 
-    //private WebDriver initializeChromiumDriver(boolean isHeadless) {
-    //    ChromiumOptions options = new ChromiumOptions();
-    //    if (isHeadless) {
-    //        options.addArguments("--headless");
-    //        options.addArguments("--disable-gpu");
-    //        options.addArguments("--no-sandbox");
-    //    }
-    //    options.addArguments("--start-maximized");
-    //    return new ChromiumDriver(options);
-    //}
-
-    //open the URL
+    // open the URL
     public void openBaseUrl(String url) {
         driver.get(url);
     }

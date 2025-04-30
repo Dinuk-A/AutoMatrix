@@ -5,8 +5,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
-import org.openqa.selenium.chromium.ChromiumOptions;
+//import org.openqa.selenium.chromium.ChromiumDriver;
+//import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -37,9 +37,9 @@ public class BaseTest {
             case "edge":
                 driver = initializeEdgeDriver(isHeadless);
                 break;
-            case "chromium":
-                driver = initializeChromiumDriver(isHeadless);
-                break;
+            //case "chromium":
+            //    driver = initializeChromiumDriver(isHeadless);
+            //    break;
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browser);
 
@@ -84,11 +84,19 @@ public class BaseTest {
         return new FirefoxDriver(options);
     }
 
-    private WebDriver initializeChromiumDriver(boolean isHeadless) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initializeChromiumDriver'");
-    }
 
+    //private WebDriver initializeChromiumDriver(boolean isHeadless) {
+    //    ChromiumOptions options = new ChromiumOptions();
+    //    if (isHeadless) {
+    //        options.addArguments("--headless");
+    //        options.addArguments("--disable-gpu");
+    //        options.addArguments("--no-sandbox");
+    //    }
+    //    options.addArguments("--start-maximized");
+    //    return new ChromiumDriver(options);
+    //}
+
+    //open the URL
     public void openBaseUrl(String url) {
         driver.get(url);
     }

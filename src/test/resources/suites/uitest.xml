@@ -36,3 +36,5 @@
 
 
     <!--mvn test "-DsuiteXmlFile=src/test/resources/suites/uitest.xml"-->
+
+    <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/uitest.xml" -->

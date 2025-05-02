@@ -78,5 +78,5 @@ public enum HttpStatusCode {
         return code;
     }
 
-    // no setter bcz value is final
+    // no setters bcz value is final
 }

@@ -12,7 +12,7 @@
 
 </suite>
 
-    <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/uitest.xml" -->
+    <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/ui/uitest.xml" -->
 
 <!--<test name="Edge Tests">
         <parameter name="browser" value="edge" />

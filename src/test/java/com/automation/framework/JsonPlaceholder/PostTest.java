@@ -26,7 +26,7 @@ public class PostTest {
     @Test
     public void postWithStaticJson() {
 
-        String requestBody = JsonReader.readStaticJsonFile("src/test/resources/data/PredefinedEx.json");
+        String requestBody = JsonReader.readStaticJsonFile("src/test/resources/data/api/PredefinedEx.json");
 
         Response response = ApiUtils.postReqWithRawJson(BASE_URL, ENDPOINT_URL, requestBody);
 

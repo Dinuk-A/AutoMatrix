@@ -38,7 +38,7 @@ public class Sempsarc {
         placeholders.put("password", "d2nEH8G4dj");
         placeholders.put("userId", "363538");
 
-        String reqBody = JsonReader.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json",
+        String reqBody = JsonReader.loadAndReplaceJsonPlaceholders("src/test/resources/data/api/SempsarcBody.json",
                 placeholders);
 
         Response tokenResponse = ApiUtils.postReqWithRawJson(SEMP_BASE_URL, ENDPOINT_URL, reqBody);

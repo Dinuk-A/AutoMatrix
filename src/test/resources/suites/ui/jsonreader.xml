@@ -9,4 +9,4 @@
 </suite>
 
 
- <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/jsonreader.xml" -->
+ <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/ui/jsonreader.xml" -->

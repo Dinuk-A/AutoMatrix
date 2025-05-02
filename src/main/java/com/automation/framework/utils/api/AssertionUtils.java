@@ -1,19 +1,10 @@
 package com.automation.framework.utils.api;
 
 import org.testng.Assert;
-
 import io.restassured.response.Response;
 
-
-//💥💥💥try to pass response directly inside them
 public class AssertionUtils {
 
-    // Assertion method for status codes original ✅
-    //public static void assertStatusCode(int actualCode, int expectedCode) {
-    //    Assert.assertEquals(actualCode, expectedCode, "Status code is not as expected.");
-    //}
-
-    //new
     public static void assertStatusCode(Response response, int expectedCode) {
         int actualCode = response.getStatusCode();
         Assert.assertEquals(actualCode, expectedCode, "Status code is not as expected.");
@@ -43,14 +34,6 @@ public class AssertionUtils {
                 "Expected Content-Type: " + expectedContentType + " but got: " + actualContentType);
     }
 
-    
-
     // MORE NEEDED 💥💥💥
-    // Checks if the response body contains the expected data.
-    // Verifies the presence of specific headers and their values.
-    //check if body is empty(in puts or in deletes)
-    // Extracts values from a JSON response using JSON Path expressions, and
-    // compares the extracted data.
 
-    //Cookies
 }

@@ -7,4 +7,4 @@
     </test>
 </suite>
 
-<!--Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/jsonplaceholdertest.xml"-->
+<!--Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/api/jsonplaceholdertest.xml"-->

@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.Test;
 
 import com.automation.framework.utils.api.ApiUtils;
-import com.automation.framework.utils.api.JsonReader;
 import com.automation.framework.utils.common.ConfigPropertyReader;
+import com.automation.framework.utils.common.JsonReader;
 
 import io.restassured.response.Response;
 import io.qameta.allure.*;

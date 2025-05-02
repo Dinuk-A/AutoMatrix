@@ -9,9 +9,9 @@ import com.automation.framework.utils.api.ApiUtils;
 import com.automation.framework.utils.api.AssertionUtils;
 import com.automation.framework.utils.api.CommonMethods;
 import com.automation.framework.utils.api.HttpStatusCode;
-import com.automation.framework.utils.api.JsonReader;
 import com.automation.framework.utils.api.JsonUtils;
 import com.automation.framework.utils.common.ConfigPropertyReader;
+import com.automation.framework.utils.common.JsonReader;
 
 import io.restassured.response.Response;
 

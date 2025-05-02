@@ -1,7 +1,8 @@
 package com.automation.framework.SampleTests.ui;
 
 import org.testng.annotations.Test;
-import com.automation.framework.utils.api.JsonReader;
+
+import com.automation.framework.utils.common.JsonReader;
 
 public class JsonReaderTest {
 

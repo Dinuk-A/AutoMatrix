@@ -1,4 +1,4 @@
-package com.automation.framework.utils.api;
+package com.automation.framework.utils.common;
 
 import java.io.IOException;
 import java.nio.file.Files;

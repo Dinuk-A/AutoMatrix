@@ -10,15 +10,15 @@ import com.automation.framework.utils.api.AssertionUtils;
 import com.automation.framework.utils.api.CommonMethods;
 import com.automation.framework.utils.api.HttpStatusCode;
 import com.automation.framework.utils.api.JsonUtils;
-import com.automation.framework.utils.common.ConfigReader;
+import com.automation.framework.utils.common.ConfigPropertyReader;
 
 import io.restassured.response.Response;
 
 public class PutTest {
 
-    private static final String BASE_URL = ConfigReader.getProperty("jp.base.url");
+    private static final String BASE_URL = ConfigPropertyReader.getProperty("jp.base.url");
 
-    private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.put.delete.url");
+    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("jp.put.delete.url");
 
     //✅
     //https://jsonplaceholder.typicode.com/posts/1

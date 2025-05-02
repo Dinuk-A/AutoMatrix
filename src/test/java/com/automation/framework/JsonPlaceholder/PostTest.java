@@ -11,15 +11,15 @@ import com.automation.framework.utils.api.CommonMethods;
 import com.automation.framework.utils.api.HttpStatusCode;
 import com.automation.framework.utils.api.JsonReader;
 import com.automation.framework.utils.api.JsonUtils;
-import com.automation.framework.utils.common.ConfigReader;
+import com.automation.framework.utils.common.ConfigPropertyReader;
 
 import io.restassured.response.Response;
 
 public class PostTest {
 
-    private static final String BASE_URL = ConfigReader.getProperty("jp.base.url");
+    private static final String BASE_URL = ConfigPropertyReader.getProperty("jp.base.url");
 
-    private static final String ENDPOINT_URL = ConfigReader.getProperty("jp.get.endpoint.url");
+    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("jp.get.endpoint.url");
 
     // ✅
     // https://jsonplaceholder.typicode.com/posts

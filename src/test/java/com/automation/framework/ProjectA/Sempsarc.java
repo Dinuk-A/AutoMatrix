@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.Test;
 
 import com.automation.framework.utils.api.ApiUtils;
-import com.automation.framework.utils.api.JsonReaderNew;
-import com.automation.framework.utils.common.ConfigReader;
+import com.automation.framework.utils.api.JsonReader;
+import com.automation.framework.utils.common.ConfigPropertyReader;
 
 import io.restassured.response.Response;
 import io.qameta.allure.*;
@@ -22,10 +22,10 @@ import io.qameta.allure.*;
 @Feature("Combined Token Retrieval and Stream Reading")
 public class Sempsarc {
 
-    private static final String SEMP_BASE_URL = ConfigReader.getProperty("sempsarc.base.url");
-    private static final String ENDPOINT_URL = ConfigReader.getProperty("sempsarc.post.url");
-    private static final String SEMP_GET_BASE_URL = ConfigReader.getProperty("sempsarc.get.base.url");
-    private static final String SEMP_GET_END_URL = ConfigReader.getProperty("sempsarc.get.endpoint");
+    private static final String SEMP_BASE_URL = ConfigPropertyReader.getProperty("sempsarc.base.url");
+    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("sempsarc.post.url");
+    private static final String SEMP_GET_BASE_URL = ConfigPropertyReader.getProperty("sempsarc.get.base.url");
+    private static final String SEMP_GET_END_URL = ConfigPropertyReader.getProperty("sempsarc.get.endpoint");
 
     @Test(description = "Retrieve access token via POST and read streaming data using the token")
     @Story("Stream API with Token Auth")
@@ -38,7 +38,7 @@ public class Sempsarc {
         placeholders.put("password", "d2nEH8G4dj");
         placeholders.put("userId", "363538");
 
-        String reqBody = JsonReaderNew.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json",
+        String reqBody = JsonReader.loadAndReplaceJsonPlaceholders("src/test/resources/data/SempsarcBody.json",
                 placeholders);
 
         Response tokenResponse = ApiUtils.postReqWithRawJson(SEMP_BASE_URL, ENDPOINT_URL, reqBody);

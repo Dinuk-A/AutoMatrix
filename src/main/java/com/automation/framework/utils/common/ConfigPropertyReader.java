@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 //to read the config.properties file and extract the base url and endpoints ✅
-public class ConfigReader {
+public class ConfigPropertyReader  {
 
     private static Properties props = new Properties();
 
@@ -14,7 +14,7 @@ public class ConfigReader {
 
             System.out.println("Loading config.properties...");
 
-            InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties");
+            InputStream input = ConfigPropertyReader .class.getClassLoader().getResourceAsStream("config.properties");
 
             if (input == null) {
                 throw new RuntimeException("config.properties file not found in classpath!");

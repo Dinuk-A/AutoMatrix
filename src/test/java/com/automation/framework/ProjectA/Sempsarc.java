@@ -22,8 +22,8 @@ import io.qameta.allure.*;
 @Feature("Combined Token Retrieval and Stream Reading")
 public class Sempsarc {
 
-    private static final String SEMP_BASE_URL = ConfigPropertyReader.getProperty("sempsarc.base.url");
-    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("sempsarc.post.url");
+    private static final String SEMP_BASE_URL = ConfigPropertyReader.getProperty("sempsarc.post.base.url");
+    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("sempsarc.post.endpoint");
     private static final String SEMP_GET_BASE_URL = ConfigPropertyReader.getProperty("sempsarc.get.base.url");
     private static final String SEMP_GET_END_URL = ConfigPropertyReader.getProperty("sempsarc.get.endpoint");
 

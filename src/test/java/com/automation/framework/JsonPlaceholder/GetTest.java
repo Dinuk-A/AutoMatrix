@@ -14,7 +14,7 @@ public class GetTest {
 
     private static final String BASE_URL = ConfigPropertyReader.getProperty("jp.base.url");
 
-    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("jp.get.endpoint.url");
+    private static final String ENDPOINT_URL = ConfigPropertyReader.getProperty("jp.get.post.endpoint.url");
 
     //✅
     //https://jsonplaceholder.typicode.com/posts

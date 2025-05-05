@@ -30,6 +30,7 @@ public class ElementActions {
     }
 
     //Javascript click on an element
+    //Sometimes elements overlap (e.g., modals or pop-ups), preventing normal clicks. JavaScript can help bypass this.
     public void jsClick(WebElement element) {
         String script = "arguments[0].click();";
         ((JavascriptExecutor) driver).executeScript(script, element);
@@ -62,17 +63,6 @@ public class ElementActions {
     public void selectByVisibleText(WebElement element, String text) {
         new Select(element).selectByVisibleText(text);
     }
-
-
-
-
-
-
-
-
-
-
-
 
     // Hover over an element
     public void hover(WebElement element) {

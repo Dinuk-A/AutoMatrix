@@ -2,7 +2,7 @@
 <suite name="JsonPlaceholder Test Suite">
     <test name="All JsonPlaceholder Tests">
         <packages>
-            <package name="com.automation.framework.JsonPlaceholder.*" />
+           <package name="com.automation.framework.SampleTests.api.JsonPlaceholder" />
         </packages>
     </test>
 </suite>

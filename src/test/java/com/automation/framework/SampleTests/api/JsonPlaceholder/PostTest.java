@@ -1,4 +1,4 @@
-package com.automation.framework.JsonPlaceholder;
+package com.automation.framework.SampleTests.api.JsonPlaceholder;
 
 import java.util.HashMap;
 import java.util.Map;

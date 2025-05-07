@@ -7,15 +7,6 @@
     </test>
 </suite>
 
-
-
-<!-- mvn test "-DsuiteXmlFile=src/test/resources/suites/sempsarc.xml"
- -->
-
+ <!-- Sempsarc working ✅✅✅✅✅ -->
  <!-- Remove-Item -Recurse -Force .\allure-results; mvn test "-DsuiteXmlFile=src/test/resources/suites/api/sempsarc.xml"
  -->
-
- <!-- Remove-Item -Recurse -Force .\allure-results; -->
-
-
- <!-- SempTwo working ✅✅✅✅✅ -->

@@ -2,9 +2,9 @@
 <suite name="Automation Framework Suite">
     <test name="Chrome Tests">
         <parameter name="browser" value="chrome" />
-         <parameter name="headless" value="true" />
+         <parameter name="headless" value="false" />
         <classes>
-            <class name="com.automation.framework.SampleTests.ui.FirstUiTest" />
+            <class name="com.automation.framework.SampleTests.ui.Yathra" />
         </classes>
     </test>
 
@@ -40,4 +40,3 @@
 
 
     <!--mvn test "-DsuiteXmlFile=src/test/resources/suites/uitest.xml"-->
-

@@ -1,6 +1,8 @@
 package com.automation.framework.utils.api;
 
 import org.testng.Assert;
+
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class AssertionUtils {
@@ -110,7 +112,43 @@ public class AssertionUtils {
      * Use this for requests like DELETE or HEAD, where an empty body is expected.
      * actualBody - The actual body of the response.
      */
-    public static void assertResponseBodyIsEmpty(String actualBody) {
+    public static void assertResponseBodyIsEmptyOri(String actualBody) {
         Assert.assertTrue(actualBody.isEmpty(), "Response body is not empty.");
     }
+
+    //new
+    public static void assertResponseBodyIsEmpty(String responseBody) {
+        String trimmed = responseBody.trim();
+        if (!trimmed.equals("[]") && !trimmed.equals("{}") && !trimmed.isEmpty()) {
+            Assert.fail("Response body is not empty. Actual body: " + trimmed);
+        }
+    }
+    
+
+    /**
+     * Asserts that a JSON field in a raw JSON string is of the expected type.
+     *
+     * @param rawJson       Raw JSON string.
+     * @param jsonPath      JSON path to the field.
+     * @param expectedClass Expected Java class.
+     */
+    public static void assertJsonFieldType(String rawJson, String jsonPath, Class<?> expectedClass) {
+        Object actualValue = JsonPath.from(rawJson).get(jsonPath);
+        Assert.assertNotNull(actualValue, "Field at '" + jsonPath + "' is null.");
+        Assert.assertTrue(expectedClass.isInstance(actualValue),
+                "Expected type " + expectedClass.getSimpleName() +
+                        " but got " + actualValue.getClass().getSimpleName() + " for field '" + jsonPath + "'.");
+    }
+
+    /**
+     * Asserts that a JSON field exists and its value is explicitly null.
+     *
+     * @param rawJson  The raw JSON string.
+     * @param jsonPath The JSON path to the field.
+     */
+    public static void assertJsonFieldIsNull(String rawJson, String jsonPath) {
+        Object value = JsonPath.from(rawJson).get(jsonPath);
+        Assert.assertNull(value, "Expected field '" + jsonPath + "' to be null, but it was: " + value);
+    }
+
 }

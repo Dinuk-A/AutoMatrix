@@ -1,12 +1,12 @@
-package com.automation.framework.Core.ui;
+package com.automation.framework.Utils.ui;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-//import org.openqa.selenium.chromium.ChromiumDriver;
-//import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -37,9 +37,6 @@ public class BaseTest {
             case "edge":
                 driver = initializeEdgeDriver(isHeadless);
                 break;
-            // case "chromium":
-            // driver = initializeChromiumDriver(isHeadless);
-            // break;
             default:
                 throw new IllegalArgumentException("Unsupported browser: " + browser);
 
@@ -54,13 +51,24 @@ public class BaseTest {
 
     private WebDriver initializeChromeDriver(boolean isHeadless) {
         ChromeOptions options = new ChromeOptions();
+
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-autofill");
+
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+
         if (isHeadless) {
-            options.addArguments("--headless");
+            options.addArguments("--headless=new"); // or just "--headless"
             options.addArguments("--disable-gpu");
             options.addArguments("--no-sandbox");
         }
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-notifications");
+
         return new ChromeDriver(options);
     }
 
@@ -84,22 +92,6 @@ public class BaseTest {
         }
         options.addArguments("--start-maximized");
         return new FirefoxDriver(options);
-    }
-
-    // private WebDriver initializeChromiumDriver(boolean isHeadless) {
-    // ChromiumOptions options = new ChromiumOptions();
-    // if (isHeadless) {
-    // options.addArguments("--headless");
-    // options.addArguments("--disable-gpu");
-    // options.addArguments("--no-sandbox");
-    // }
-    // options.addArguments("--start-maximized");
-    // return new ChromiumDriver(options);
-    // }
-
-    // open the URL
-    public void openBaseUrl(String url) {
-        driver.get(url);
     }
 
     // Close the browser and quit the WebDriver session

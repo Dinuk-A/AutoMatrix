@@ -1,5 +1,6 @@
 package com.automation.framework.utils.ui;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -16,6 +17,10 @@ public class UiAssertionUtils {
      */
     public static void assertElementEnabled(WebElement element) {
         Assert.assertTrue(element.isEnabled(), "Element is not enabled.");
+    }
+
+    public static void assertElementDisabled(WebElement element) {
+        Assert.assertFalse(element.isEnabled(), "Element is enabled, but it should be disabled.");
     }
 
     /*
@@ -42,9 +47,19 @@ public class UiAssertionUtils {
     }
 
     /*
+     * Asserts that an element is visible and contains text.
+     */
+    public static void assertElementHasText(WebElement element) {
+        String actualText = element.getText().trim();
+        Assert.assertFalse(actualText.isEmpty(), "Element is visible but contains no text.");
+    }
+    
+
+    /*
      * Asserts that the actual page title matches the expected title.
      */
-    public static void assertPageTitle(String actualTitle, String expectedTitle) {
+    public static void assertPageTitle(WebDriver driver, String expectedTitle) {
+        String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
     }
 
@@ -54,4 +69,26 @@ public class UiAssertionUtils {
     public static void assertTextEquals(String actual, String expected) {
         Assert.assertEquals(actual, expected, "Text values do not match.");
     }
+
+    /**
+     * Asserts that the current URL contains the expected path or substring.
+     */
+    public static void assertUrlContains(WebDriver driver, String expectedPartialUrl) {
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertTrue(
+                actualUrl.contains(expectedPartialUrl),
+                "Expected URL to contain: " + expectedPartialUrl + " but was: " + actualUrl);
+    }
+
+    /**
+     * Asserts that the current URL exactly matches the expected URL.
+     */
+    public static void assertUrlEquals(WebDriver driver, String expectedUrl) {
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertEquals(
+                actualUrl,
+                expectedUrl,
+                "Expected URL to be exactly: " + expectedUrl + " but was: " + actualUrl);
+    }
+
 }

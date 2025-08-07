@@ -18,12 +18,11 @@ public class PopupActions {
     // "Yes/No" confirmation)
     // - For prompts: Accepts a prompt dialog (e.g., clicking "OK" after entering
     // text)
-    public void acceptPopup() {
+    public void acceptPopup(Alert alert) {
         try {
-            Alert alert = driver.switchTo().alert();
             alert.accept();
         } catch (NoAlertPresentException e) {
-            System.out.println("No alert, confirm, or prompt present to accept.");
+            System.out.println("No alert to accept.");
         }
     }
 
@@ -33,9 +32,8 @@ public class PopupActions {
     // "Yes/No" confirmation)
     // - For prompts: Dismisses a prompt dialog (e.g., clicking "Cancel" after
     // entering text)
-    public void dismissPopup() {
+    public void dismissPopup(Alert alert) {
         try {
-            Alert alert = driver.switchTo().alert();
             alert.dismiss();
         } catch (NoAlertPresentException e) {
             System.out.println("No alert, confirm, or prompt present to dismiss.");
@@ -48,12 +46,11 @@ public class PopupActions {
     // sure you want to delete this?")
     // - For prompts: Returns the message of a prompt dialog (e.g., "Please enter
     // your name")
-    public String getPopupText() {
+    public String getPopupText(Alert alert) {
         try {
-            Alert alert = driver.switchTo().alert();
             return alert.getText();
         } catch (NoAlertPresentException e) {
-            return null; // No popup present to retrieve text from
+            return null; 
         }
     }
 
@@ -61,9 +58,8 @@ public class PopupActions {
     // - Specifically used for prompt dialogs, where a user is expected to enter
     // text (e.g., "Please enter your name")
     // - Does nothing for alerts or confirms as they do not require text input
-    public void inputTextToPrompt(String text) {
+    public void inputTextToPrompt(Alert alert, String text) {
         try {
-            Alert alert = driver.switchTo().alert();
             alert.sendKeys(text);
         } catch (NoAlertPresentException e) {
             System.out.println("No prompt present to send text to.");

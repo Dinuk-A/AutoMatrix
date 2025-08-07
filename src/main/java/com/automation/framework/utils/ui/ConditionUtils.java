@@ -8,8 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ConditionUtils {
+
      // Check if the element is displayed (visible on screen)
-    public boolean isElementDisplayed(WebElement element) {
+    public static boolean isElementDisplayed(WebElement element) {
         try {
             return element.isDisplayed();
         } catch (NoSuchElementException e) {
@@ -18,7 +19,7 @@ public class ConditionUtils {
     }
 
     // Check if the element is enabled (interactable)
-    public boolean isElementEnabled(WebElement element) {
+    public static boolean isElementEnabled(WebElement element) {
         try {
             return element.isEnabled();
         } catch (NoSuchElementException e) {
@@ -27,7 +28,7 @@ public class ConditionUtils {
     }
 
     // Check if the element is selected (for checkboxes, radios, etc.)
-    public boolean isElementSelected(WebElement element) {
+    public static boolean isElementSelected(WebElement element) {
         try {
             return element.isSelected();
         } catch (NoSuchElementException e) {
@@ -36,13 +37,13 @@ public class ConditionUtils {
     }
 
     // Check if an element exists in the DOM
-    public boolean doesElementExist(By locator, WebDriver driver) {
+    public static boolean doesElementExist(By locator, WebDriver driver) {
         List<WebElement> elements = driver.findElements(locator);
         return !elements.isEmpty();
     }
 
     // Check if specific text is present in an element
-    public boolean isTextPresentInElement(WebElement element, String expectedText) {
+    public static boolean isTextPresentInElement(WebElement element, String expectedText) {
         try {
             return element.getText().contains(expectedText);
         } catch (NoSuchElementException e) {

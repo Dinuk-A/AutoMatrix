@@ -3,7 +3,7 @@
 <suite name="Heroku Form Test Suite">
     <test name="Heroku Form Test">
         <parameter name="browser" value="chrome" />
-     <parameter name="headless" value="false" />
+     <parameter name="headless" value="true" />
         <classes>
             <class name="com.automation.framework.Yathra.ui.LoginTests"/>
         </classes>

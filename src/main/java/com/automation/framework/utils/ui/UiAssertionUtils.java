@@ -53,7 +53,6 @@ public class UiAssertionUtils {
         String actualText = element.getText().trim();
         Assert.assertFalse(actualText.isEmpty(), "Element is visible but contains no text.");
     }
-    
 
     /*
      * Asserts that the actual page title matches the expected title.
@@ -61,6 +60,14 @@ public class UiAssertionUtils {
     public static void assertPageTitle(WebDriver driver, String expectedTitle) {
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match.");
+    }
+
+    /*
+     * Asserts that the actual page title does NOT match the given title.
+     */
+    public static void assertPageTitleNot(WebDriver driver, String unexpectedTitle) {
+        String actualTitle = driver.getTitle();
+        Assert.assertNotEquals(actualTitle, unexpectedTitle, "Page title unexpectedly matches.");
     }
 
     /*

@@ -28,4 +28,9 @@ public class BrowserUtils {
         return driver.getTitle();
     }
 
+    public static void printPageTitle(WebDriver driver) {
+        System.out.println("Page Title: " + driver.getTitle());
+    }
+    
+
 }
